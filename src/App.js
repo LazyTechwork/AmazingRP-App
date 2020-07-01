@@ -28,6 +28,7 @@ import Onboarding from "./js/components/Onboarding.jsx";
 import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
 import bridge from "@vkontakte/vk-bridge";
+import FAQPanel from "./js/panels/profile/FAQPanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -166,6 +167,7 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <ProfilePanel id="base" userinfo={this.state.userinfo}/>
+                            <FAQPanel id="faq"/>
                         </View>
                     </Root>
 

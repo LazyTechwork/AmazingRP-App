@@ -18,7 +18,7 @@ class ProfilePanel extends React.Component {
     }
 
     render() {
-        const {id} = this.props;
+        const {id, setPage} = this.props;
         const userinfo = this.state.userinfo
 
         return (
@@ -49,7 +49,7 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" onClick={()=>{window.open('https://vk.me/ipetrovofficial')}}>Написать нам</Button>}
+                    actions={<Button mode="overlay_primary" onClick={()=>{setPage("profile", "faq")}}>Помогите!</Button>}
                 />
             </Panel>
         );
