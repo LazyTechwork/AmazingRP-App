@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {goBack, closeModal, setStory} from "./js/store/router/actions";
+import {closeModal, goBack, setStory} from "./js/store/router/actions";
 import {getActivePanel} from "./js/services/_functions";
 import * as VK from './js/services/VK';
 
-import {Epic, View, Root, Tabbar, ModalRoot, TabbarItem, ConfigProvider} from "@vkontakte/vkui";
+import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@vkontakte/vkui";
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28More from '@vkontakte/icons/dist/28/more';
@@ -18,6 +18,14 @@ import MorePanelExample from './js/panels/more/example';
 
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
+import Introduction from "./js/components/Introduction";
+
+import phone0 from './img/introduction/phone0.png';
+import phone1 from './img/introduction/phone1.png';
+import phone2 from './img/introduction/phone2.png';
+import phone3 from './img/introduction/phone3.png';
+import phone4 from './img/introduction/phone4.png';
+import phone5 from './img/introduction/phone5.png';
 
 class App extends React.Component {
     constructor(props) {
@@ -124,6 +132,50 @@ class App extends React.Component {
                             <MorePanelExample id="filters"/>
                         </View>
                     </Root>
+
+                    <View id="introduction" activePanel="introduction">
+                        <Introduction
+                            id="introduction"
+                            pages={[
+                                {
+                                    stage: '1',
+                                    image: phone0,
+                                    title: 'Amazing RolePlay',
+                                    subtitle: 'Сервис по игровой сети CR-MP\nМы впервые в VK!'
+                                },
+                                {
+                                    stage2: 2,
+                                    image: phone1,
+                                    title: 'Новичок в CR-MP?',
+                                    subtitle: 'Мы предлагаем тебя крутой сервер под названием Amazing RolePlay'
+                                },
+                                {
+                                    stage3: 3,
+                                    image: phone2,
+                                    title: 'Следи за новостями!',
+                                    subtitle: 'В этом разделе можешь следить за новостями проекта.'
+                                },
+                                {
+                                    stage4: 4,
+                                    image: phone3,
+                                    title: 'Ищи игрока!',
+                                    subtitle: 'Прямо в сервисе можно поискать игрока,\nполучить его статистику'
+                                },
+                                {
+                                    stage5: 5,
+                                    image: phone4,
+                                    title: 'Задавай вопросы!',
+                                    subtitle: 'Хочешь быстрее развиваться на проекте?\nЗадавай вопросы, мы Вам поможем.'
+                                },
+                                {
+                                    stage6: 6,
+                                    image: phone5,
+                                    title: 'Играй в викторину!',
+                                    subtitle: 'Долго играешь на сервере и хочешь показать свои навыки?\nЭтот раздел для тебя.'
+                                },
+                            ]}
+                        />
+                    </View>
                 </Epic>
             </ConfigProvider>
         );
