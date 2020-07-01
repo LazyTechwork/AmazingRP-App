@@ -40,11 +40,7 @@ class FAQPanel extends React.Component {
                                 Найти данные работы можно по команде «/gps», далее «Работы» <br/>
                                 Выбирайте одну из них и можно приступать к зарабатыванию первоначального заработка
                             </Text>
-                        </div>}
-                    </SlideDown>
-                    <SlideDown>
-                        {this.state.game && <div>
-                            <Headline weight="semibold" style={{marginBottom: 8}}>Как устроиться в организацию?</Headline>
+			<Headline weight="semibold" style={{marginBottom: 8}}>Как устроиться в организацию?</Headline>
                             <Text weight="regular">
 								Для того, чтобы устроиться в организацию, Вам нужно:<br/>
 
