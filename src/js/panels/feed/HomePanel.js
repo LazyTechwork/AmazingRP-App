@@ -5,6 +5,7 @@ import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/r
 
 import {Button, Cell, Panel, PanelHeader, Separator, Title} from "@vkontakte/vkui"
 import Carousel from "../../components/Carousel/Carousel";
+import Icon28ChevronRightOutline from '@vkontakte/icons/dist/28/chevron_right_outline';
 
 import "./newsfeed.css"
 import {setFormData} from "../../store/formData/actions";
@@ -18,8 +19,8 @@ class HomePanel extends React.Component {
                 <div key={post.id}>
                     <Cell
                         size="l"
-                        expandable
                         multiline
+                        asideContent={<Icon28ChevronRightOutline />}
                         onClick={() => {
                             setFormData("postview", post)
                             setPage("home", "postview")
