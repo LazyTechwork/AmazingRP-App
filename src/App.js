@@ -9,6 +9,7 @@ import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28Profile from '@vkontakte/icons/dist/28/profile';
+import Icon28GiftOutline from '@vkontakte/icons/dist/28/gift_outline';
 
 import MorePanelBase from './js/panels/more/base';
 import MorePanelExample from './js/panels/more/example';
@@ -29,6 +30,7 @@ import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
 import bridge from "@vkontakte/vk-bridge";
 import FAQPanel from "./js/panels/profile/FAQPanel";
+import QuizPanel from "./js/panels/quiz/QuizPanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -144,6 +146,10 @@ class App extends React.Component {
                     selected={activeStory === 'home'}
                 ><Icon28Newsfeed/></TabbarItem>
                 <TabbarItem
+                    onClick={() => setStory('quiz', 'list')}
+                    selected={activeStory === 'quiz'}
+                ><Icon28GiftOutline/></TabbarItem>
+                <TabbarItem
                     onClick={() => setStory('profile', 'base')}
                     selected={activeStory === 'profile'}
                 ><Icon28Profile/></TabbarItem>
@@ -180,6 +186,18 @@ class App extends React.Component {
                         >
                             <ProfilePanel id="base" userinfo={this.state.userinfo}/>
                             <FAQPanel id="faq"/>
+                        </View>
+                    </Root>
+
+                    <Root id="quiz" activeView={activeView} popout={popout}>
+                        <View
+                            id="quiz"
+                            modal={homeModals}
+                            activePanel={getActivePanel("profile")}
+                            history={history}
+                            onSwipeBack={() => goBack()}
+                        >
+                            <QuizPanel id="list"/>
                         </View>
                     </Root>
 
