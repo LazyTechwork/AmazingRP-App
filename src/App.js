@@ -58,7 +58,41 @@ class App extends React.Component {
             last_name: 'Дуров',
             id: 1,
             photo_100: 'https://sun9-47.userapi.com/c850016/v850016414/13ab73/BY7D48azABA.jpg?ava=1'
-        }
+        },
+        quizes: [
+            {
+                id: 1,
+                name: "RolePlay-термины",
+                description: "Насколько хорошо Вы знаете RolePlay-термины",
+                questions: [
+                    {
+                        name: "Что значит термин - \"MG\"?",
+                        answers: [
+                            {
+                                name: "Мото гейминг нанесение урона игроку с мото транспорта"
+                            }, {
+                                name: "Мета гейминг смешивание игровой и вне игровой информации",
+                                right: true
+                            }, {
+                                name: "Метание гранат метание гранат без причины"
+                            },
+                        ]
+                    }, {
+                        name: "Что значит термин - \"SK\"?",
+                        answers: [
+                            {
+                                name: "Причинение ущерба здоровью персонажа без весомой игровой причины"
+                            }, {
+                                name: "Причинение ущерба здоровью персонажа без причины на территории базы организации",
+                                right: true
+                            }, {
+                                name: "Причинение ущерба здоровью персонажа транспортным средством"
+                            },
+                        ]
+                    },
+                ]
+            }
+        ]
     }
 
     componentDidMount() {
@@ -197,7 +231,7 @@ class App extends React.Component {
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
-                            <QuizPanel id="list"/>
+                            <QuizPanel id="list" quizes={this.state.quizes}/>
                         </View>
                     </Root>
 
