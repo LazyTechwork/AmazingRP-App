@@ -9,8 +9,6 @@ import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28More from '@vkontakte/icons/dist/28/more';
-
-import HomePanelBase from './js/panels/home/base';
 import HomePanelGroups from './js/panels/home/groups';
 
 import MorePanelBase from './js/panels/more/base';
@@ -21,6 +19,14 @@ import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
 import API from "./js/services/API";
 import HomePanel from "./js/panels/feed/HomePanel";
 
+import phone0 from './img/introduction/phone0.png';
+import phone1 from './img/introduction/phone1.png';
+import phone2 from './img/introduction/phone2.png';
+import phone3 from './img/introduction/phone3.png';
+import phone4 from './img/introduction/phone4.png';
+import phone5 from './img/introduction/phone5.png';
+import Onboarding from "./js/components/Onboarding.jsx";
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -29,7 +35,8 @@ class App extends React.Component {
     }
 
     state = {
-        banners: []
+        banners: [],
+        news: []
     }
 
     componentDidMount() {
@@ -51,6 +58,11 @@ class App extends React.Component {
 
         API.request('getBanners', null, 'GET', 1).then((banners) => {
             this.setState({banners});
+            API.request('getNews', null, 'GET', 1).then((news) => {
+                this.setState({news});
+            }).catch((e) => {
+                console.error(e);
+            });
         }).catch((e) => {
             console.error(e);
             this.setState({isLoaded: true});
@@ -115,7 +127,7 @@ class App extends React.Component {
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
-                            <HomePanel id="base" banners={this.state.banners}/>
+                            <HomePanel id="base" banners={this.state.banners} news={this.state.news}/>
                             <HomePanelGroups id="groups"/>
                         </View>
                     </Root>
@@ -141,7 +153,7 @@ class App extends React.Component {
                     </Root>
 
 
-                    {/*<Root id="onboarding" activeView={activeView} popout={popout}>
+                    <Root id="onboarding" activeView={activeView} popout={popout}>
                         <View id="onboarding" activePanel="onboarding">
                             <Onboarding
                                 id="onboarding"
@@ -185,7 +197,7 @@ class App extends React.Component {
                                 ]}
                             />
                         </View>
-                    </Root>*/}
+                    </Root>
                 </Epic>
             </ConfigProvider>
         );

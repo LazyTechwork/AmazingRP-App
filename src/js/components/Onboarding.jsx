@@ -6,6 +6,8 @@ import Slider from 'react-slick';
 import Icon24BrowserForward from '@vkontakte/icons/dist/24/browser_forward';
 
 import '../../css/onboarding.css';
+import {closePopout, goBack, openModal, openPopout, setPage} from "../store/router/actions";
+import {connect} from "react-redux";
 
 class Onboarding extends Component {
     constructor() {
@@ -64,7 +66,6 @@ class Onboarding extends Component {
                         const {slideIndex} = this.state;
                         return (
                             <div
-                                // eslint-disable-next-line react/no-array-index-key
                                 key={key}
                                 className="onboarding"
                             >
@@ -76,7 +77,7 @@ class Onboarding extends Component {
                                 <div className="button_next">
                                     <Button
                                         onClick={() => {
-                                            slideIndex === pages.length - 1 ? this.props.variable.changePage('first') : this.next();
+                                            slideIndex === pages.length - 1 ? setPage("home", "base"): this.next();
                                         }}
                                         size="l"
                                         stretched
@@ -98,4 +99,12 @@ class Onboarding extends Component {
     }
 }
 
-export default Onboarding;
+const mapDispatchToProps = {
+    setPage,
+    goBack,
+    openPopout,
+    closePopout,
+    openModal
+};
+
+export default connect(null, mapDispatchToProps)(Onboarding);

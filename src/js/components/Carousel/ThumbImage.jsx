@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import './ThumbImage.css';
 
 class ThumbImage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         let {url, sizePadding, style} = this.props
