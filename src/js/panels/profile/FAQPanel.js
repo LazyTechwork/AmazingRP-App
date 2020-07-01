@@ -7,7 +7,7 @@ import {setFormData} from "../../store/formData/actions";
 import {SlideDown} from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 import Icon28WriteSquareOutline from '@vkontakte/icons/dist/28/write_square_outline';
-import {Button, Div, Headline, Panel, PanelHeader, PanelHeaderBack, Text, Title, Separator} from "@vkontakte/vkui";
+import {Button, Div, Headline, Panel, PanelHeader, PanelHeaderBack, Separator, Text, Title} from "@vkontakte/vkui";
 
 class FAQPanel extends React.Component {
 
@@ -34,27 +34,33 @@ class FAQPanel extends React.Component {
                         {this.state.game && <div>
                             <Headline weight="semibold" style={{marginBottom: 8}}>Где заработать первые
                                 деньги?</Headline>
-                            <Text weight="regular">
+                            <Text weight="regular" style={{marginBottom: 16}}>
                                 Заработать первые деньги можно на работах, которых на нашем сервере достаточно
                                 много <br/>
                                 Найти данные работы можно по команде «/gps», далее «Работы» <br/>
                                 Выбирайте одну из них и можно приступать к зарабатыванию первоначального заработка
                             </Text>
-			<Headline weight="semibold" style={{marginBottom: 8}}>Как устроиться в организацию?</Headline>
-                            <Text weight="regular">
-								Для того, чтобы устроиться в организацию, Вам нужно:<br/>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Как устроиться в
+                                организацию?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>
+                                Для того, чтобы устроиться в организацию, Вам нужно:<br/>
 
-								Во-первых, это увидеть объявление в /news о начале собеседования в желаемую фракцию;<br/>
+                                Во-первых, это увидеть объявление в /news о начале собеседования в желаемую
+                                фракцию;<br/>
 
-								Во-вторых, подходить в эту фракцию по критериям: уровень игрового персонажа (проживания области),<br/>
-								не иметь судимостей (или же не больше количества, написанного в /news);<br/>
+                                Во-вторых, подходить в эту фракцию по критериям: уровень игрового персонажа (проживания
+                                области),<br/>
+                                не иметь судимостей (или же не больше количества, написанного в /news);<br/>
 
-								В-третьих, это знание RolePlay терминов и понимание, что такое IC процесс и OOC процесс. <br/>
-								IC процесс - это игровой процесс и все действия из этого мира пишутся в обычном чате. <br/>
-								OOC процесс - это внеигровой процесс и все действия пишутся в /b чате<br/>
-                               
-								Для того, чтобы изучить все подробно, можно зайти на сервер и прописать команду «/help», <br/>
-								далее 7 пункт «Необходимые правила для вступления в организацию»<br/>
+                                В-третьих, это знание RolePlay терминов и понимание, что такое IC процесс и OOC
+                                процесс. <br/>
+                                IC процесс - это игровой процесс и все действия из этого мира пишутся в обычном
+                                чате. <br/>
+                                OOC процесс - это внеигровой процесс и все действия пишутся в /b чате<br/>
+
+                                Для того, чтобы изучить все подробно, можно зайти на сервер и прописать команду
+                                «/help», <br/>
+                                далее 7 пункт «Необходимые правила для вступления в организацию»<br/>
                             </Text>
                         </div>}
                     </SlideDown>
