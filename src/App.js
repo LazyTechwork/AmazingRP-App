@@ -38,7 +38,19 @@ class App extends React.Component {
 
     state = {
         banners: [],
-        news: [],
+        news: [{
+            "id": 1,
+            "title": "Мы в Программе тестирования!",
+            "content": "Мы попали в программу тестирования! Самое время начать его. \n Прежде, ознакомьтесь с гексалогом тестировщика и правилами составления отчётов. Удачного тестирования!",
+            "date": "02.07.2020",
+            "time": "12:00",
+            "author": "Команда разработчиков",
+            "tags": [
+                "testpool",
+                "vktesters",
+                "bydesign"
+            ]
+        }],
         userinfo: {
             first_name: 'Павел',
             last_name: 'Дуров',
@@ -80,11 +92,11 @@ class App extends React.Component {
 
         API.request('getBanners', null, 'GET', 1).then((banners) => {
             this.setState({banners});
-            API.request('getNews', null, 'GET', 1).then((news) => {
+            /*API.request('getNews', null, 'GET', 1).then((news) => {
                 this.setState({news});
             }).catch((e) => {
                 console.error(e);
-            });
+            });*/
         }).catch((e) => {
             console.error(e);
             this.setState({isLoaded: true});
