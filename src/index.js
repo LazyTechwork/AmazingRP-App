@@ -21,7 +21,7 @@ export const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk),
 ));
 
-store.dispatch(setStory('home', 'base'));
+store.dispatch(setStory('introduction', 'introduction'));
 
 ReactDOM.render(
     <Provider store={store}>

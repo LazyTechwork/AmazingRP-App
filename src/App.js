@@ -86,20 +86,22 @@ class App extends React.Component {
             </ModalRoot>
         );
 
+        const tabbar = (
+            <Tabbar>
+                <TabbarItem
+                    onClick={() => setStory('home', 'base')}
+                    selected={activeStory === 'home'}
+                ><Icon28Newsfeed/></TabbarItem>
+                <TabbarItem
+                    onClick={() => setStory('more', 'callmodal')}
+                    selected={activeStory === 'more'}
+                ><Icon28More/></TabbarItem>
+            </Tabbar>
+        );
+
         return (
             <ConfigProvider isWebView={true} scheme={colorScheme}>
-                <Epic activeStory={activeStory} tabbar={
-                    <Tabbar>
-                        <TabbarItem
-                            onClick={() => setStory('home', 'base')}
-                            selected={activeStory === 'home'}
-                        ><Icon28Newsfeed/></TabbarItem>
-                        <TabbarItem
-                            onClick={() => setStory('more', 'callmodal')}
-                            selected={activeStory === 'more'}
-                        ><Icon28More/></TabbarItem>
-                    </Tabbar>
-                }>
+                <Epic activeStory={activeStory} tabbar={(activeStory === 'introduction') ? null : tabbar}>
                     <Root id="home" activeView={activeView} popout={popout}>
                         <View
                             id="home"
@@ -133,49 +135,52 @@ class App extends React.Component {
                         </View>
                     </Root>
 
-                    <View id="introduction" activePanel="introduction">
-                        <Introduction
-                            id="introduction"
-                            pages={[
-                                {
-                                    stage: '1',
-                                    image: phone0,
-                                    title: 'Amazing RolePlay',
-                                    subtitle: 'Сервис по игровой сети CR-MP\nМы впервые в VK!'
-                                },
-                                {
-                                    stage2: 2,
-                                    image: phone1,
-                                    title: 'Новичок в CR-MP?',
-                                    subtitle: 'Мы предлагаем тебя крутой сервер под названием Amazing RolePlay'
-                                },
-                                {
-                                    stage3: 3,
-                                    image: phone2,
-                                    title: 'Следи за новостями!',
-                                    subtitle: 'В этом разделе можешь следить за новостями проекта.'
-                                },
-                                {
-                                    stage4: 4,
-                                    image: phone3,
-                                    title: 'Ищи игрока!',
-                                    subtitle: 'Прямо в сервисе можно поискать игрока,\nполучить его статистику'
-                                },
-                                {
-                                    stage5: 5,
-                                    image: phone4,
-                                    title: 'Задавай вопросы!',
-                                    subtitle: 'Хочешь быстрее развиваться на проекте?\nЗадавай вопросы, мы Вам поможем.'
-                                },
-                                {
-                                    stage6: 6,
-                                    image: phone5,
-                                    title: 'Играй в викторину!',
-                                    subtitle: 'Долго играешь на сервере и хочешь показать свои навыки?\nЭтот раздел для тебя.'
-                                },
-                            ]}
-                        />
-                    </View>
+
+                    <Root id="introduction" activeView={activeView} popout={popout}>
+                        <View id="introduction" activePanel="introduction">
+                            <Introduction
+                                id="introduction"
+                                pages={[
+                                    {
+                                        stage: '1',
+                                        image: phone0,
+                                        title: 'Amazing RolePlay',
+                                        subtitle: 'Сервис по игровой сети CR-MP\nМы впервые в VK!'
+                                    },
+                                    {
+                                        stage2: 2,
+                                        image: phone1,
+                                        title: 'Новичок в CR-MP?',
+                                        subtitle: 'Мы предлагаем тебя крутой сервер под названием Amazing RolePlay'
+                                    },
+                                    {
+                                        stage3: 3,
+                                        image: phone2,
+                                        title: 'Следи за новостями!',
+                                        subtitle: 'В этом разделе можешь следить за новостями проекта.'
+                                    },
+                                    {
+                                        stage4: 4,
+                                        image: phone3,
+                                        title: 'Ищи игрока!',
+                                        subtitle: 'Прямо в сервисе можно поискать игрока,\nполучить его статистику'
+                                    },
+                                    {
+                                        stage5: 5,
+                                        image: phone4,
+                                        title: 'Задавай вопросы!',
+                                        subtitle: 'Хочешь быстрее развиваться на проекте?\nЗадавай вопросы, мы Вам поможем.'
+                                    },
+                                    {
+                                        stage6: 6,
+                                        image: phone5,
+                                        title: 'Играй в викторину!',
+                                        subtitle: 'Долго играешь на сервере и хочешь показать свои навыки?\nЭтот раздел для тебя.'
+                                    },
+                                ]}
+                            />
+                        </View>
+                    </Root>
                 </Epic>
             </ConfigProvider>
         );
