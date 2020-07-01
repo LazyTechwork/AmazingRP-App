@@ -24,15 +24,6 @@ export const initApp = () => (dispatch) => {
     });
 };
 
-export const getProfileInfo = () => {
-    bridge.send("VKWebAppGetUserInfo", {}).then(data => {
-        console.log(data);
-        return data;
-    }).catch(error => {
-        return error;
-    });
-}
-
 export const getAuthToken = (scope) => (dispatch) => {
     bridge.send("VKWebAppGetAuthToken", {
         "app_id": APP_ID,
