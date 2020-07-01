@@ -41,7 +41,6 @@ class App extends React.Component {
 
     componentDidMount() {
         const {goBack, dispatch} = this.props;
-
         dispatch(VK.initApp());
 
         window.onpopstate = () => {
