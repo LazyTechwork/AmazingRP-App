@@ -72,7 +72,7 @@ class FAQPanel extends React.Component {
                         {this.state.site && <div>
                             <Headline weight="semibold" style={{marginBottom: 8}}>Где заработать первые
                                 деньги?</Headline>
-                            <Text weight="regular">
+                            <Text weight="regular" style={{marginBottom: 16}}>
                                 Заработать первые деньги можно на работах, которых на нашем сервере достаточно
                                 много <br/>
                                 Найти данные работы можно по команде «/gps», далее «Работы» <br/>
@@ -88,7 +88,7 @@ class FAQPanel extends React.Component {
                         {this.state.tech && <div style={{marginBottom: 16}}>
                             <Headline weight="semibold" style={{marginBottom: 8}}>Где заработать первые
                                 деньги?</Headline>
-                            <Text weight="regular">
+                            <Text weight="regular" style={{marginBottom: 16}}>
                                 Заработать первые деньги можно на работах, которых на нашем сервере достаточно
                                 много <br/>
                                 Найти данные работы можно по команде «/gps», далее «Работы» <br/>
