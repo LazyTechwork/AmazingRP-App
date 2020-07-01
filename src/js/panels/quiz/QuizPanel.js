@@ -3,11 +3,13 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
 
-import {Button, Cell, Panel, PanelHeader, Snackbar, Avatar} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Panel, PanelHeader, Snackbar} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon16Done from '@vkontakte/icons/dist/16/done';
 import {randomInteger} from "../../services/_functions";
+
+const shuffler = () => Math.random() - 0.5
 
 const blueBackground = {
     backgroundColor: 'var(--accent)'
@@ -32,7 +34,10 @@ class QuizPanel extends React.Component {
                 snackbar:
                     <Snackbar
                         layout="vertical"
-                        onClose={() => this.setState({snackbar: null})}
+                        onClose={() => {
+                            this.setState({snackbar: null});
+                            this.props.setFormData("quizresults", null)
+                        }}
                         before={<Avatar size={24} style={blueBackground}><Icon16Done fill="#fff" width={14}
                                                                                      height={14}/></Avatar>}
                     >
@@ -41,6 +46,11 @@ class QuizPanel extends React.Component {
                     </Snackbar>
             });
         }
+    }
+
+    componentWillUnmount() {
+        if (this.state.snackbar)
+            this.props.setFormData("quizresults", null)
     }
 
     render() {
@@ -57,8 +67,11 @@ class QuizPanel extends React.Component {
                     asideContent={`${this.state.passedQuizes[quiz.id] ?? "0"}/${quiz.questions.length}`}
                     bottomContent={
                         <Button mode="primary" onClick={() => {
+                            let shuffledQuestions = quiz.questions.slice(0)
+                            shuffledQuestions.sort(shuffler)
+                            shuffledQuestions.forEach(q => q.answers.sort(shuffler))
                             setFormData("quiz", {
-                                quiz, tech: {
+                                quiz: {...quiz, questions: shuffledQuestions}, tech: {
                                     next: randomInteger(0, quiz.questions.length - 1),
                                     rightAnswers: 0,
                                     passed: []

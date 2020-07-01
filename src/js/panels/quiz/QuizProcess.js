@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {goBack, setPage} from '../../store/router/actions';
+import {goBack, setPage, setStory} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
 
 import {Avatar, Button, Div, Panel, PanelHeader, PanelHeaderBack, Snackbar, Title} from "@vkontakte/vkui";
@@ -31,7 +31,6 @@ class QuizProcess extends React.Component {
             interval: null,
             snackbar: null
         };
-        console.log(localStorage.getItem("quizresults"))
     }
 
     rightAnswer(index) {
@@ -112,6 +111,8 @@ class QuizProcess extends React.Component {
         const quiz = this.state.quiz.quiz
         const tech = this.state.quiz.tech
 
+        console.log(tech.passed.length, quiz.questions.length)
+
         if (tech.passed.length === quiz.questions.length) {
             if (localStorage.getItem("quizresults"))
                 localStorage.setItem("quizresults", JSON.stringify({
@@ -125,7 +126,7 @@ class QuizProcess extends React.Component {
                 rightAnswers: tech.rightAnswers,
                 totalAnswers: tech.passed.length
             })
-            this.props.setPage("quiz", "list")
+            this.props.setStory("quiz", "list")
             return
         }
 
@@ -147,7 +148,6 @@ class QuizProcess extends React.Component {
         const quiz = this.state.quiz.quiz
         const tech = this.state.quiz.tech
         const currentQuestion = quiz.questions[tech.next]
-        console.log(tech.next, currentQuestion)
 
         return (
             <Panel id={id}>
@@ -161,6 +161,7 @@ class QuizProcess extends React.Component {
                     {currentQuestion.answers.map((ans, index) => (<div>
                         <Button
                             stretched
+                            key={`answer_${tech.next}_${index}`}
                             mode={this.state.answered && ((this.state.isRightAnswer && this.state.selected === index) || ans.right) ? "commerce" : this.state.answered && this.state.selected === index ? "destructive" : "outline"}
                             onClick={() => {
                                 if (ans.right)
@@ -191,7 +192,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     setFormData,
-    goBack, setPage
+    goBack, setPage, setStory
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizProcess);
