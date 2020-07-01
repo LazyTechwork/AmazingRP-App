@@ -1,4 +1,4 @@
-.introduction {
+.onboarding {
     height: 84vh;
     padding-top: 1vh;
     width: 100%;
@@ -52,7 +52,7 @@
     bottom: 320px;
     justify-content: center;
     left: 0;
-    right: 0;
+    right: 0px;
 }
 
 .dot {
@@ -61,7 +61,7 @@
     border-radius: 30px;
 }
 
-#introduction > .Panel__in {
+#onboarding > .Panel__in {
     padding-bottom: 0 !important;
 }
 
@@ -69,26 +69,23 @@
     display: none !important;
 }
 
-@media screen and (max-height: 1024px) {
-    .introduction {
+@media screen and (max-height : 1024px) {
+    .onboarding {
         height: 80vh;
     }
 }
-
-@media screen and (max-height: 700px) {
-    .introduction {
+@media screen and (max-height : 700px) {
+    .onboarding {
         height: 80vh;
     }
 }
-
-@media screen and (max-height: 600px) {
-    .introduction {
+@media screen and (max-height : 600px) {
+    .onboarding {
         height: 79vh;
     }
 }
-
-@media screen and (max-height: 550px) {
-    .introduction {
+@media screen and (max-height : 550px) {
+    .onboarding {
         height: 78vh;
     }
 }

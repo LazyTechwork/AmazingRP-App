@@ -18,20 +18,18 @@ import MorePanelExample from './js/panels/more/example';
 
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
-import Introduction from "./js/components/Introduction";
-
-import phone0 from './img/introduction/phone0.png';
-import phone1 from './img/introduction/phone1.png';
-import phone2 from './img/introduction/phone2.png';
-import phone3 from './img/introduction/phone3.png';
-import phone4 from './img/introduction/phone4.png';
-import phone5 from './img/introduction/phone5.png';
+import API from "./js/services/API";
+import HomePanel from "./js/panels/feed/HomePanel";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.lastAndroidBackAction = 0;
+    }
+
+    state = {
+        banners: []
     }
 
     componentDidMount() {
@@ -50,6 +48,13 @@ class App extends React.Component {
                 window.history.pushState(null, null);
             }
         };
+
+        API.request('getBanners', null, 'GET', 1).then((banners) => {
+            this.setState({banners});
+        }).catch((e) => {
+            console.error(e);
+            this.setState({isLoaded: true});
+        });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -101,7 +106,7 @@ class App extends React.Component {
 
         return (
             <ConfigProvider isWebView={true} scheme={colorScheme}>
-                <Epic activeStory={activeStory} tabbar={(activeStory === 'introduction') ? null : tabbar}>
+                <Epic activeStory={activeStory} tabbar={(activeStory === 'onboarding') ? null : tabbar}>
                     <Root id="home" activeView={activeView} popout={popout}>
                         <View
                             id="home"
@@ -110,7 +115,7 @@ class App extends React.Component {
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
-                            <HomePanelBase id="base" withoutEpic={false}/>
+                            <HomePanel id="base" banners={this.state.banners}/>
                             <HomePanelGroups id="groups"/>
                         </View>
                     </Root>
@@ -136,10 +141,10 @@ class App extends React.Component {
                     </Root>
 
 
-                    <Root id="introduction" activeView={activeView} popout={popout}>
-                        <View id="introduction" activePanel="introduction">
-                            <Introduction
-                                id="introduction"
+                    {/*<Root id="onboarding" activeView={activeView} popout={popout}>
+                        <View id="onboarding" activePanel="onboarding">
+                            <Onboarding
+                                id="onboarding"
                                 pages={[
                                     {
                                         stage: '1',
@@ -180,7 +185,7 @@ class App extends React.Component {
                                 ]}
                             />
                         </View>
-                    </Root>
+                    </Root>*/}
                 </Epic>
             </ConfigProvider>
         );

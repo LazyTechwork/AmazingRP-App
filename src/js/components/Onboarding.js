@@ -5,9 +5,9 @@ import Slider from 'react-slick';
 
 import Icon24BrowserForward from '@vkontakte/icons/dist/24/browser_forward';
 
-import '../../css/introduction.css';
+import '../../css/onboarding.css';
 
-class Introduction extends Component {
+class Onboarding extends Component {
     constructor() {
         super();
 
@@ -57,15 +57,16 @@ class Introduction extends Component {
         );
 
         return (
-            <Panel id="introduction">
+            <Panel id="onboarding">
                 <Slider {...settings} ref={(c) => (this.slider = c)}>
                     {pages.map((page, key) => {
                         const {image, title, subtitle} = page;
                         const {slideIndex} = this.state;
                         return (
                             <div
+                                // eslint-disable-next-line react/no-array-index-key
                                 key={key}
-                                className="introduction"
+                                className="onboarding"
                             >
                                 <img src={image} className="image" alt=""/>
 
@@ -97,4 +98,4 @@ class Introduction extends Component {
     }
 }
 
-export default Introduction;
+export default Onboarding;
