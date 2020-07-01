@@ -64,7 +64,7 @@ class QuizPanel extends React.Component {
                     multiline
                     size="l"
                     description={quiz.description}
-                    asideContent={`${this.state.passedQuizes[quiz.id] ?? "0"}/${quiz.questions.length}`}
+                    asideContent={`${this.state.passedQuizes ? this.state.passedQuizes[quiz.id] ?? "0" : "0"}/${quiz.questions.length}`}
                     bottomContent={
                         <Button mode="primary" onClick={() => {
                             let shuffledQuestions = quiz.questions.slice(0)
