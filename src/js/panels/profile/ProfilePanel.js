@@ -36,6 +36,25 @@ class ProfilePanel extends React.Component {
                 <Banner
                     mode="image"
                     size="m"
+                    header="GREEN сервер"
+                    subheader="Наша личная рекомендация для начала игры!"
+                    background={
+                        <div
+                            style={{
+                                backgroundColor: '#2af598',
+                                background: 'linear-gradient(-30deg, #2af598 0%, #009efd 100%)',
+                                backgroundPosition: 'left bottom',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                            }}
+                        />
+                    }
+                    actions={<Button mode="overlay_primary" onClick={()=>{window.open("https://amazing-rp.ru/start")}}>Начать игру</Button>}
+                />
+
+                <Banner
+                    mode="image"
+                    size="m"
                     header="Нужна помощь?"
                     subheader="Обратитесь к нашей команде поддержки!"
                     background={
