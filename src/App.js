@@ -8,8 +8,7 @@ import * as VK from './js/services/VK';
 import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@vkontakte/vkui";
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
-import Icon28More from '@vkontakte/icons/dist/28/more';
-import HomePanelGroups from './js/panels/home/groups';
+import Icon28Profile from '@vkontakte/icons/dist/28/profile';
 
 import MorePanelBase from './js/panels/more/base';
 import MorePanelExample from './js/panels/more/example';
@@ -27,6 +26,7 @@ import phone4 from './img/introduction/phone4.png';
 import phone5 from './img/introduction/phone5.png';
 import Onboarding from "./js/components/Onboarding.jsx";
 import PostView from "./js/panels/feed/PostView";
+import ProfilePanel from "./js/panels/profile/ProfilePanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -111,9 +111,13 @@ class App extends React.Component {
                     selected={activeStory === 'home'}
                 ><Icon28Newsfeed/></TabbarItem>
                 <TabbarItem
+                    onClick={() => setStory('profile', 'base')}
+                    selected={activeStory === 'profile'}
+                ><Icon28Profile/></TabbarItem>
+                {/*<TabbarItem
                     onClick={() => setStory('more', 'callmodal')}
                     selected={activeStory === 'more'}
-                ><Icon28More/></TabbarItem>
+                ><Icon28More/></TabbarItem>*/}
             </Tabbar>
         );
 
@@ -130,6 +134,17 @@ class App extends React.Component {
                         >
                             <HomePanel id="base" banners={this.state.banners} news={this.state.news}/>
                             <PostView id="postview"/>
+                        </View>
+                    </Root>
+                    <Root id="profile" activeView={activeView} popout={popout}>
+                        <View
+                            id="home"
+                            modal={homeModals}
+                            activePanel={getActivePanel("profile")}
+                            history={history}
+                            onSwipeBack={() => goBack()}
+                        >
+                            <ProfilePanel id="base"/>
                         </View>
                     </Root>
                     <Root id="more" activeView={activeView} popout={popout}>
