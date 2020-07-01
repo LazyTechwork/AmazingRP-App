@@ -228,7 +228,7 @@ class App extends React.Component {
                         <View
                             id="quiz"
                             modal={homeModals}
-                            activePanel={getActivePanel("profile")}
+                            activePanel={getActivePanel("quiz")}
                             history={history}
                             onSwipeBack={() => goBack()}
                         >

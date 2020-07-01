@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
+import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
 import {Avatar, Banner, Button, Panel, PanelHeader, RichCell} from "@vkontakte/vkui"
 
@@ -18,7 +18,7 @@ class ProfilePanel extends React.Component {
     }
 
     render() {
-        const {id, setPage} = this.props;
+        const {id, setPage, setStory} = this.props;
         const userinfo = this.state.userinfo
 
         return (
@@ -49,7 +49,30 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" onClick={()=>{window.open("https://amazing-rp.ru/start")}}>Начать игру</Button>}
+                    actions={<Button mode="overlay_primary" onClick={() => {
+                        window.open("https://amazing-rp.ru/start")
+                    }}>Начать игру</Button>}
+                />
+
+                <Banner
+                    mode="image"
+                    size="m"
+                    header="Викторины"
+                    subheader="Попробуйте наши викторины на знание игровой вселенной Криминальной России!"
+                    background={
+                        <div
+                            style={{
+                                backgroundColor: '#667eea',
+                                background: 'linear-gradient(-30deg, #667eea 0%, #764ba2 100%)',
+                                backgroundPosition: 'left bottom',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                            }}
+                        />
+                    }
+                    actions={<Button mode="overlay_primary" onClick={() => {
+                        setStory("quiz", "list")
+                    }}>Проверить свои знания</Button>}
                 />
 
                 <Banner
@@ -68,7 +91,9 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" onClick={()=>{setPage("profile", "faq")}}>Помогите!</Button>}
+                    actions={<Button mode="overlay_primary" onClick={() => {
+                        setPage("profile", "faq")
+                    }}>Помогите!</Button>}
                 />
             </Panel>
         );
@@ -78,6 +103,7 @@ class ProfilePanel extends React.Component {
 
 const mapDispatchToProps = {
     setPage,
+    setStory,
     goBack,
     openPopout,
     closePopout,
