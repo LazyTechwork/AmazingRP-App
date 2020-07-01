@@ -26,6 +26,7 @@ export const initApp = () => (dispatch) => {
 
 export const getProfileInfo = () => {
     bridge.send("VKWebAppGetUserInfo", {}).then(data => {
+        console.log(data);
         return data;
     }).catch(error => {
         return error;

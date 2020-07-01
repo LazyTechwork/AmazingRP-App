@@ -21,20 +21,21 @@ class ProfilePanel extends React.Component {
     }
 
     render() {
-        const {panelid} = this.props;
-        const {first_name, last_name, id, photo_200} = this.state.userinfo
+        const {id} = this.props;
+
+        console.log(this.state.userinfo)
 
         return (
-            <Panel id={panelid}>
+            <Panel id={id}>
                 <PanelHeader>Профиль</PanelHeader>
-                <RichCell
+                {this.state.userinfo && <RichCell
                     disabled
                     multiline
                     text="Игрок проекта"
-                    before={<Avatar size={72} src={photo_200}/>}
+                    before={<Avatar size={72} src={this.state.userinfo.photo_200}/>}
                 >
-                    {`${first_name} ${last_name}`}
-                </RichCell>
+                    {`${this.state.userinfo.first_name} ${this.state.userinfo.last_name}`}
+                </RichCell>}
             </Panel>
         );
     }

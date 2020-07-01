@@ -31,7 +31,6 @@ import ProfilePanel from "./js/panels/profile/ProfilePanel";
 class App extends React.Component {
     constructor(props) {
         super(props);
-
         this.lastAndroidBackAction = 0;
     }
 
@@ -136,17 +135,19 @@ class App extends React.Component {
                             <PostView id="postview"/>
                         </View>
                     </Root>
+
                     <Root id="profile" activeView={activeView} popout={popout}>
                         <View
-                            id="home"
+                            id="profile"
                             modal={homeModals}
                             activePanel={getActivePanel("profile")}
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
-                            <ProfilePanel id="base"/>
+                            <ProfilePanel id="base" userinfo={this.state.userinfo}/>
                         </View>
                     </Root>
+
                     <Root id="more" activeView={activeView} popout={popout}>
                         <View
                             id="more"
