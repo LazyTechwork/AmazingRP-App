@@ -111,8 +111,6 @@ class QuizProcess extends React.Component {
         const quiz = this.state.quiz.quiz
         const tech = this.state.quiz.tech
 
-        console.log(tech.passed.length, quiz.questions.length)
-
         if (tech.passed.length === quiz.questions.length) {
             if (localStorage.getItem("quizresults"))
                 localStorage.setItem("quizresults", JSON.stringify({
