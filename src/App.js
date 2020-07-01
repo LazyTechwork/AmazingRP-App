@@ -31,6 +31,7 @@ import ProfilePanel from "./js/panels/profile/ProfilePanel";
 import bridge from "@vkontakte/vk-bridge";
 import FAQPanel from "./js/panels/profile/FAQPanel";
 import QuizPanel from "./js/panels/quiz/QuizPanel";
+import QuizProcess from "./js/panels/quiz/QuizProcess";
 
 class App extends React.Component {
     constructor(props) {
@@ -232,6 +233,7 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <QuizPanel id="list" quizes={this.state.quizes}/>
+                            <QuizProcess id="quiz"/>
                         </View>
                     </Root>
 

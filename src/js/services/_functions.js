@@ -40,3 +40,7 @@ export const getActivePanel = (view) => {
 
     return panel;
 };
+
+export const randomInteger = (min, max) => {
+    return Math.floor(min + Math.random() * (max + 1 - min));
+}
