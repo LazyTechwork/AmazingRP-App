@@ -26,6 +26,7 @@ import phone3 from './img/introduction/phone3.png';
 import phone4 from './img/introduction/phone4.png';
 import phone5 from './img/introduction/phone5.png';
 import Onboarding from "./js/components/Onboarding.jsx";
+import PostView from "./js/panels/feed/PostView";
 
 class App extends React.Component {
     constructor(props) {
@@ -128,7 +129,7 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <HomePanel id="base" banners={this.state.banners} news={this.state.news}/>
-                            <HomePanelGroups id="groups"/>
+                            <PostView id="postview"/>
                         </View>
                     </Root>
                     <Root id="more" activeView={activeView} popout={popout}>

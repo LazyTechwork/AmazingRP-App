@@ -3,15 +3,16 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
 
-import {Cell, Panel, PanelHeader, Separator, Title, Button} from "@vkontakte/vkui"
+import {Button, Cell, Panel, PanelHeader, Separator, Title} from "@vkontakte/vkui"
 import Carousel from "../../components/Carousel/Carousel";
 
 import "./newsfeed.css"
+import {setFormData} from "../../store/formData/actions";
 
 class HomePanel extends React.Component {
 
     render() {
-        const {id, banners, news} = this.props;
+        const {id, banners, news, setPage, setFormData} = this.props;
         const posts = news.length > 0
             && news.map((post) => (
                 <div key={post.id}>
@@ -20,14 +21,16 @@ class HomePanel extends React.Component {
                         expandable
                         multiline
                         onClick={() => {
-
+                            setFormData("postview", post)
+                            setPage("home", "postview")
                         }}
                         bottomContent={(
                             <div>
                                 <div className="post_td">
                                     <div className="post_tags">
                                         {post.tags.map((tag, id) => (
-                                            <Button mode="secondary" key={id} style={{marginRight: "10px"}}>{`#${tag.toLowerCase()}`}</Button>
+                                            <Button mode="secondary" key={id}
+                                                    style={{marginRight: "10px"}}>{`#${tag.toLowerCase()}`}</Button>
                                         ))}
                                     </div>
                                 </div>
@@ -68,7 +71,8 @@ const mapDispatchToProps = {
     goBack,
     openPopout,
     closePopout,
-    openModal
+    openModal,
+    setFormData
 };
 
 export default connect(null, mapDispatchToProps)(HomePanel);
