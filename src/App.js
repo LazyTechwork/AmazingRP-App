@@ -27,6 +27,7 @@ import phone5 from './img/introduction/phone5.png';
 import Onboarding from "./js/components/Onboarding.jsx";
 import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
+import bridge from "@vkontakte/vk-bridge";
 
 class App extends React.Component {
     constructor(props) {
@@ -36,12 +37,33 @@ class App extends React.Component {
 
     state = {
         banners: [],
-        news: []
+        news: [],
+        userinfo: {
+            first_name: 'Павел',
+            last_name: 'Дуров',
+            id: 1,
+            photo_100: 'https://sun9-47.userapi.com/c850016/v850016414/13ab73/BY7D48azABA.jpg?ava=1'
+        }
     }
 
     componentDidMount() {
         const {goBack, dispatch} = this.props;
         dispatch(VK.initApp());
+
+        // Получаем информацию о пользователе
+        bridge.send("VKWebAppGetUserInfo", {}).then(data => {
+            this.setState({
+                userinfo: {
+                    first_name: data.first_name,
+                    last_name: data.last_name,
+                    id: data.id,
+                    photo_100: data.photo_100
+                }
+            });
+        }).catch(error => {
+            console.error(error)
+            throw error;
+        });
 
         window.onpopstate = () => {
             let timeNow = +new Date();
