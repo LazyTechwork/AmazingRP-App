@@ -1,0 +1,94 @@
+.introduction {
+    height: 84vh;
+    padding-top: 1vh;
+    width: 100%;
+    background-image: url("../img/introduction/one.png");
+    background-size: cover;
+    display: flex !important;
+    outline: none !important;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.image {
+    width: 30vh;
+}
+
+
+.title {
+    font-family: "TT Norms", sans-serif;
+    font-weight: bold;
+    padding: 5vh 0 2vh 0;
+    font-size: 25px;
+    line-height: 1.2;
+    color: rgb(255, 255, 255);
+}
+
+.subtitle {
+    font-family: "TT Norms", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.2;
+    color: rgb(255, 255, 255);
+}
+
+.button_next {
+    bottom: 20.5vh;
+    position: fixed;
+}
+
+.button_Panel {
+    width: 90vw !important;
+    justify-content: center;
+}
+
+.dots {
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    padding: 4vh 0;
+    bottom: 320px;
+    justify-content: center;
+    left: 0;
+    right: 0;
+}
+
+.dot {
+    background-color: #fff;
+    margin: 0 4px;
+    border-radius: 30px;
+}
+
+#introduction > .Panel__in {
+    padding-bottom: 0 !important;
+}
+
+.slick-prev, .slick-next {
+    display: none !important;
+}
+
+@media screen and (max-height: 1024px) {
+    .introduction {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .introduction {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .introduction {
+        height: 79vh;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    .introduction {
+        height: 78vh;
+    }
+}
