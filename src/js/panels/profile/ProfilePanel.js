@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
 
-import {Avatar, Panel, PanelHeader, RichCell} from "@vkontakte/vkui"
+import {Avatar, Banner, Button, Panel, PanelHeader, RichCell} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 
@@ -32,6 +32,25 @@ class ProfilePanel extends React.Component {
                 >
                     {`${userinfo.first_name} ${userinfo.last_name}`}
                 </RichCell>}
+
+                <Banner
+                    mode="image"
+                    size="m"
+                    header="Нужна помощь?"
+                    subheader="Обратитесь к нашей команде поддержки!"
+                    background={
+                        <div
+                            style={{
+                                backgroundColor: '#d92f2f',
+                                backgroundImage: 'url(https://amazing-rp.ru/assets/images/header-help.jpg)',
+                                backgroundPosition: 'left bottom',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                            }}
+                        />
+                    }
+                    actions={<Button mode="overlay_primary" onClick={()=>{window.open('https://vk.me/ipetrovofficial')}}>Написать нам</Button>}
+                />
             </Panel>
         );
     }
