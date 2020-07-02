@@ -127,13 +127,29 @@ class FAQPanel extends React.Component {
                            onClick={() => this.setState({site: !this.state.site})}>Вопросы по сайту/форуму</Title>
                     <SlideDown>
                         {this.state.site && <div>
-                            <Headline weight="semibold" style={{marginBottom: 8}}>Где заработать первые
-                                деньги?</Headline>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Как перенести свой аккаунт на другой сервер?</Headline>
                             <Text weight="regular" style={{marginBottom: 16}}>
-                                Заработать первые деньги можно на работах, которых на нашем сервере достаточно
-                                много <br/>
-                                Найти данные работы можно по команде «/gps», далее «Работы» <br/>
-                                Выбирайте одну из них и можно приступать к зарабатыванию первоначального заработка
+                            Для этого нужно авторизоваться на нашем сайте, зайти в настройки и нажать на вкладку сменить сервер. <br/>
+                            Данная услуга стоит 500 амазингов (рублей)
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Как подключить 2FA к игре?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>
+                            Вам нужно авторизоваться в личном кабинете, перейти в настройки и перейти во вкладку 2FA авторизация<br/>
+
+                            Перед этим, нужно скачать на свой смартфон приложение Google Authenticator или же Яндекс Ключ, <br/>
+                           зайти в это приложение и отсканировать QR-код, после чего у Вас на экране будет код подтверждения, <br/>
+                            который нужно будет ввести на сайт и который будет нужно вводить при входе в игру
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Как привязить свою страницу VK и зачем это нужно?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>
+                             Вам необходимо авторизоваться в личном кабинете, перейти в настройки и перейти <br/>
+                             во вкладку Привязка ВКонтакте. Это нужно для того, чтобы у игрового аккаунта была <br/>
+                             дополнительная защита, а также для участия в эксклюзивных розыгрышах от нас
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Что делать, если не приходят сообщения от AMAZING?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>
+                             Рекомендуем Вам посмотреть их в разделе спам на почте, если и там нет письма, то <br/>
+                              попробуйте сменить почтовый ящик
                             </Text>
                         </div>}
                     </SlideDown>
@@ -143,13 +159,34 @@ class FAQPanel extends React.Component {
                            onClick={() => this.setState({tech: !this.state.tech})}>Технические проблемы</Title>
                     <SlideDown>
                         {this.state.tech && <div style={{marginBottom: 16}}>
-                            <Headline weight="semibold" style={{marginBottom: 8}}>Где заработать первые
-                                деньги?</Headline>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Что делать, если не загружаются файлы игры?</Headline>
                             <Text weight="regular" style={{marginBottom: 16}}>
-                                Заработать первые деньги можно на работах, которых на нашем сервере достаточно
-                                много <br/>
-                                Найти данные работы можно по команде «/gps», далее «Работы» <br/>
-                                Выбирайте одну из них и можно приступать к зарабатыванию первоначального заработка
+                            Вам следует попробовать отключить/удалить Ваш антивирус, ведь скорее всего проблема кроется именно в нём
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Как включить улучшенную графику?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>                        
+                            Вам требуется всего-лишь зайти в настройки лаунчера, нажав на шестеренку<br/>
+                            в правом верхнем углу, затем включить улучшение графики
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Не запускается игра, крашит, что делать?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>                        
+                            Попробуйте установить Доп. ПО, нажав на три точки в правом нижнем углу, а <br/>
+                            также попробуйте отключить улучшение графики в настройках лаунчера
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Что делать, если появляется ошибка «Fastman 92»?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>                        
+                            Во-первых, нужно отключить все антивирусы, а также встроенный защитник Windows. <br/>
+                            Во-вторых, попробуйте переустановить игру, полностью удаляя её с компьютера
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Что делать, если при заходе на сервер виден разноцветный экран?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>                        
+                            Вам требуется зайти в коренную папку игры, после нажать на клиент CRMP правой кнопкой мыши, <br/>
+                           затем «свойства → совместимость → режим пониженной цветности (включаем и ставим вместо значения 256 значение 65536)»
+                            </Text>
+                            <Headline weight="semibold" style={{marginBottom: 8}}>Очень сильно глючит игра, что делать?</Headline>
+                            <Text weight="regular" style={{marginBottom: 16}}>                        
+                            Рекомендуем отключить Вам антивирусное ПО, установить дополнительное ПО, отключить улучшение графики, <br/>
+                            запустить игру от имени администратора, а также поставить минимальную стриминговую память в настройках игры
                             </Text>
                         </div>}
                     </SlideDown>
