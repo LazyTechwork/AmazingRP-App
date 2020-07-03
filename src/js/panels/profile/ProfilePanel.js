@@ -56,6 +56,7 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="Викторины"
+                    subheader="&nbsp;"
                     background={
                         <div
                             style={{
@@ -76,6 +77,7 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="Нужна помощь?"
+                    subheader="&nbsp;"
                     background={
                         <div
                             style={{
