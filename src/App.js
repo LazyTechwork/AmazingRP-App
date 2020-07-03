@@ -42,7 +42,32 @@ class App extends React.Component {
     }
 
     state = {
-        banners: [],
+        banners: [
+            {
+                "id": 1,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/XxpKypf/8c38af45f85abc2bd22b70553bca544589a673e53984d4b9ba185aae637fd84b.png",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 2,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/M9ZKzJw/31b586edfc8ddca1d4927f6249f3ffd8f43e593219ba4f9cd3c9f20877f21a7f.png",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 3,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/NsXL0Hx/Vz-Lq-Rh-TXVU.jpg",
+                    "thumb": ""
+                }
+            }
+        ],
         news: [{
             "id": 1,
             "title": "Клубы по интересам",
@@ -535,17 +560,17 @@ class App extends React.Component {
             }
         };
 
-        API.request('getBanners', null, 'GET', 1).then((banners) => {
+        /*API.request('getBanners', null, 'GET', 1).then((banners) => {
             this.setState({banners});
-            /*API.request('getNews', null, 'GET', 1).then((news) => {
+            API.request('getNews', null, 'GET', 1).then((news) => {
                 this.setState({news});
             }).catch((e) => {
                 console.error(e);
-            });*/
+            });
         }).catch((e) => {
             console.error(e);
             this.setState({isLoaded: true});
-        });
+        });*/
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
