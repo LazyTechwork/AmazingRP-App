@@ -41,10 +41,10 @@ class ProfilePanel extends React.Component {
                     background={
                         <div
                             style={{
-                                backgroundColor: '#2af598',
-                                background: 'linear-gradient(-30deg, #2af598 0%, #009efd 100%)',
-                                backgroundPosition: 'left bottom',
-                                backgroundSize: 'cover',
+                                backgroundColor: '#0ba360',
+                                background: 'url(https://amazing-rp.ru/assets/images/index-char-4.png), linear-gradient(-30deg, #3cba92 0%, #0ba360 100%)',
+                                backgroundPosition: 'right 10px top 5px, center center',
+                                backgroundSize: '150px, contain',
                                 backgroundRepeat: 'no-repeat',
                             }}
                         />
@@ -56,14 +56,14 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="Викторины"
-                    subheader="Попробуйте наши викторины на знание игровой вселенной Криминальной России!"
+                    subheader={<span>Попробуйте наши викторины на знание <br/> игровой вселенной Криминальной России!</span>}
                     background={
                         <div
                             style={{
                                 backgroundColor: '#667eea',
-                                background: 'linear-gradient(-30deg, #667eea 0%, #764ba2 100%)',
-                                backgroundPosition: 'left bottom',
-                                backgroundSize: 'cover',
+                                background: 'url(https://amazing-rp.ru/assets/images/index-char-3.png), linear-gradient(-30deg, #667eea 0%, #764ba2 100%)',
+                                backgroundPosition: 'right 10px top 5px, center center',
+                                backgroundSize: '150px, contain',
                                 backgroundRepeat: 'no-repeat',
                             }}
                         />
@@ -82,9 +82,9 @@ class ProfilePanel extends React.Component {
                         <div
                             style={{
                                 backgroundColor: '#d92f2f',
-                                backgroundImage: 'url(https://amazing-rp.ru/assets/images/header-help.jpg)',
-                                backgroundPosition: 'left bottom',
-                                backgroundSize: 'cover',
+                                background: 'url(https://amazing-rp.ru/assets/images/index-char-5.png), url(https://amazing-rp.ru/assets/images/header-help.jpg)',
+                                backgroundPosition: 'right 10px top 5px, center center',
+                                backgroundSize: '150px, cover',
                                 backgroundRepeat: 'no-repeat',
                             }}
                         />
