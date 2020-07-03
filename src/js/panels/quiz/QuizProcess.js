@@ -124,7 +124,7 @@ class QuizProcess extends React.Component {
                 rightAnswers: tech.rightAnswers,
                 totalAnswers: tech.passed.length
             })
-            this.props.setStory("quiz", "list")
+            this.props.setPage("quiz", "finale")
             return
         }
 
@@ -155,7 +155,8 @@ class QuizProcess extends React.Component {
                     {quiz.name}
                 </PanelHeader>
                 <Div style={{marginTop: 64}}>
-                    <Title level="1" weight="semibold" style={{marginBottom: 32, textAlign: "center"}}>{currentQuestion.name}</Title>
+                    <Title level="1" weight="semibold"
+                           style={{marginBottom: 32, textAlign: "center"}}>{currentQuestion.name}</Title>
                     {currentQuestion.answers.map((ans, index) => (<div>
                         <Button
                             stretched
@@ -171,8 +172,10 @@ class QuizProcess extends React.Component {
                         >{ans.name}</Button>
                     </div>))}
                     {this.state.answered &&
-                    <div><Button size="l" onClick={() => this.nextQuestion()} stretched style={{marginTop: 16}}>Следующий
-                        вопрос {this.state.isRightAnswer ? `... ${this.state.timer}` : ""}</Button></div>}
+                    <div><Button size="l" onClick={() => this.nextQuestion()} stretched
+                                 style={{marginTop: 16}}>
+                        {tech.passed.length === quiz.questions.length ? "Перейти к результатам" : "Следующий вопрос"} {this.state.isRightAnswer ? `... ${this.state.timer}` : ""}
+                    </Button></div>}
                 </Div>
 
                 {this.state.snackbar}

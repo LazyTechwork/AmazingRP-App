@@ -17,7 +17,6 @@ import MorePanelExample from './js/panels/more/example';
 
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
-import API from "./js/services/API";
 import HomePanel from "./js/panels/feed/HomePanel";
 
 import phone0 from './img/introduction/phone0.png';
@@ -34,6 +33,7 @@ import FAQPanel from "./js/panels/profile/FAQPanel";
 import QuizPanel from "./js/panels/quiz/QuizPanel";
 import QuizProcess from "./js/panels/quiz/QuizProcess";
 import RadioPanel from "./js/panels/radio/RadioPanel";
+import QuizFinale from "./js/panels/quiz/QuizFinale";
 
 class App extends React.Component {
     constructor(props) {
@@ -81,32 +81,32 @@ class App extends React.Component {
                 "amazing"
             ]
         },
-        {
-            "id": 2,
-            "title": "Безумный азарт",
-            "url": "https://www.youtube.com/embed/cw09Co6P4cM",
-            "content": "Мы долгое время изучали Ваши предложения и пожелания, ориентируясь на них, сегодня мы презентуем текущее обновление, которое объединяет в себе множество игровых составляющих от долгожданных новых возможностей в СТО до увлекательных системных мероприятий, продуманных до мельчайших деталей. А количество игровых корректировок, исправлений для стабильной и комфортной игры закружит Вам голову. \n Приготовьтесь, будет очень интересно!",
-            "date": "18.06.2020",
-            "time": "11:00",
-            "author": "Разработчики AMAZING",
-            "tags": [
-                "newversion",
-                "arp"
-            ]
-        },
-        {
-            "id": 3,
-            "title": "Открытие 5 сервера",
-            "url": "https://www.youtube.com/embed/UxtxCTqna9k",
-            "content": "Мы все вместе долгое время шли к этому моменту и рады сообщить, что уже 1 мая состоится грандиозное открытие нашего 5 сервера, название которого уже определено — AMAZING SILVER. Следите за новостями, ведь точное время открытия мы объявим чуть позже ",
-            "date": "28.04.2020",
-            "time": "10:00",
-            "author": "Разработчики AMAZING",
-            "tags": [
-                "newserver",
-                "silver"
-            ]
-        }],
+            {
+                "id": 2,
+                "title": "Безумный азарт",
+                "url": "https://www.youtube.com/embed/cw09Co6P4cM",
+                "content": "Мы долгое время изучали Ваши предложения и пожелания, ориентируясь на них, сегодня мы презентуем текущее обновление, которое объединяет в себе множество игровых составляющих от долгожданных новых возможностей в СТО до увлекательных системных мероприятий, продуманных до мельчайших деталей. А количество игровых корректировок, исправлений для стабильной и комфортной игры закружит Вам голову. \n Приготовьтесь, будет очень интересно!",
+                "date": "18.06.2020",
+                "time": "11:00",
+                "author": "Разработчики AMAZING",
+                "tags": [
+                    "newversion",
+                    "arp"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Открытие 5 сервера",
+                "url": "https://www.youtube.com/embed/UxtxCTqna9k",
+                "content": "Мы все вместе долгое время шли к этому моменту и рады сообщить, что уже 1 мая состоится грандиозное открытие нашего 5 сервера, название которого уже определено — AMAZING SILVER. Следите за новостями, ведь точное время открытия мы объявим чуть позже ",
+                "date": "28.04.2020",
+                "time": "10:00",
+                "author": "Разработчики AMAZING",
+                "tags": [
+                    "newserver",
+                    "silver"
+                ]
+            }],
         userinfo: {
             first_name: 'Павел',
             last_name: 'Дуров',
@@ -525,6 +525,50 @@ class App extends React.Component {
                         ]
                     }
                 ]
+            },
+            {
+                id: 3,
+                name: "Тест",
+                description: "Тест",
+                questions: [
+                    {
+                        name: "Как добавить игрока в чёрный список звонков?",
+                        answers: [
+                            {
+                                name: "/blacklist"
+                            }, {
+                                name: "/addbl",
+                                right: true
+                            }, {
+                                name: "/bl"
+                            },
+                        ]
+                    }, {
+                        name: "Как продать дом?",
+                        answers: [
+                            {
+                                name: "/house"
+                            }, {
+                                name: "/sellhouse",
+                                right: true
+                            }, {
+                                name: "/home"
+                            },
+                        ]
+                    }, {
+                        name: "Как открыть мень дальнобойщика?",
+                        answers: [
+                            {
+                                name: "/job"
+                            }, {
+                                name: "/dalno",
+                                right: true
+                            }, {
+                                name: "/jobs"
+                            },
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -684,6 +728,7 @@ class App extends React.Component {
                         >
                             <QuizPanel id="list" quizes={this.state.quizes}/>
                             <QuizProcess id="quiz"/>
+                            <QuizFinale id="finale"/>
                         </View>
                     </Root>
 

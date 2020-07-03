@@ -21,36 +21,12 @@ class QuizPanel extends React.Component {
         super(props);
 
         this.state = {
-            passedQuizes: {},
-            quizresults: props.inputData['quizresults'] || null,
-            snackbar: null
+            passedQuizes: {}
         }
     }
 
     componentDidMount() {
         this.setState({passedQuizes: JSON.parse(localStorage.getItem("quizresults"))})
-        if (this.state.quizresults) {
-            this.setState({
-                snackbar:
-                    <Snackbar
-                        layout="vertical"
-                        onClose={() => {
-                            this.setState({snackbar: null});
-                            this.props.setFormData("quizresults", null)
-                        }}
-                        before={<Avatar size={24} style={blueBackground}><Icon16Done fill="#fff" width={14}
-                                                                                     height={14}/></Avatar>}
-                    >
-                        Тест &laquo;{this.state.quizresults.quiz}&raquo; пройден! <br/>
-                        Результат: {`${this.state.quizresults.rightAnswers}/${this.state.quizresults.totalAnswers}`}
-                    </Snackbar>
-            });
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.state.snackbar)
-            this.props.setFormData("quizresults", null)
     }
 
     render() {

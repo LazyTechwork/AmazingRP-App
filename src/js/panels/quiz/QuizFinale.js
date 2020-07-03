@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {goBack, setPage, setStory} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
 
-import {Div, Panel, PanelHeader, PanelHeaderBack, Text, Title} from "@vkontakte/vkui";
+import {Div, Panel, PanelHeader, PanelHeaderBack, Text, Title, Button} from "@vkontakte/vkui";
 
 class QuizFinale extends React.Component {
 
@@ -21,7 +21,7 @@ class QuizFinale extends React.Component {
     }
 
     render() {
-        const {id, setPage} = this.props;
+        const {id, setStory} = this.props;
         const quiz = this.state.quiz
 
         return (
@@ -31,16 +31,16 @@ class QuizFinale extends React.Component {
                 >
                     Результаты
                 </PanelHeader>
-                <Div>
-                    <Title level="1" weight="heavy" style={{marginBottom: 16}}>Поздравляем!</Title>
+                <Div style={{textAlign: "center"}}>
+                    <Title level="1" weight="heavy">Поздравляем!</Title>
                     <Title level="2" weight="regular" style={{marginBottom: 32}}>Вы прошли
-                        викторину <br/> &laquo;{quiz.quiz}&raquo;</Title>
-                    <Text weight="regular" style={{marginBottom: 16}}>Всего вопросов: {quiz.totalAnswers}</Text>
+                        викторину &laquo;{quiz.quiz}&raquo;</Title>
+                    <Text weight="regular">Всего вопросов: {quiz.totalAnswers}</Text>
                     <Text weight="regular" style={{marginBottom: 16}}>Отвечено правильно: {quiz.rightAnswers}</Text>
                 </Div>
                 <Div style={{display: 'flex'}}>
                     <Button size="l" stretched style={{ marginRight: 8 }}>Поделиться результатом</Button>
-                    <Button size="l" stretched mode="secondary" onClick={()=>setPage("quiz", "list")}>Другие викторины</Button>
+                    <Button size="l" stretched mode="secondary" onClick={()=>setStory("quiz", "list")}>Другие викторины</Button>
                 </Div>
                 {this.state.snackbar}
             </Panel>
