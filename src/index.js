@@ -13,7 +13,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {setStory} from "./js/store/router/actions";
 
 import '@vkontakte/vkui/dist/vkui.css';
-import './css/main.css';
+import './css/main.scss';
 
 import App from './App';
 

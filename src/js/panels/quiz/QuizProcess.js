@@ -103,7 +103,7 @@ class QuizProcess extends React.Component {
     nextQuestion() {
         if (this.state.interval !== null) {
             clearInterval(this.state.interval)
-            this.state.interval = null
+            this.setState({interval: null})
         }
 
         this.setState({snackbar: null})

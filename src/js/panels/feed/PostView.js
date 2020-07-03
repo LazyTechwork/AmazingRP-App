@@ -28,9 +28,11 @@ class PostView extends React.Component {
                     Просмотр поста
                 </PanelHeader>
                 <Div>
-                    <Title level="1" weight="semibold" style={{marginBottom: 16}}>{title}</Title>
-                    <Text weight="regular" style={{marginBottom: 16}}>{content}</Text>
-                    <iframe width="420" height="315" src={url}></iframe>
+                    <Title level="1" weight="semibold" style={{marginBottom: 32}}>{title}</Title>
+                    <div className="responsive-embed" style={{marginBottom: 16}}>
+                        <iframe src={url} title={title}/>
+                    </div>
+                    <Text weight="regular">{content}</Text>
                 </Div>
             </Panel>
         );
