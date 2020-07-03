@@ -36,7 +36,7 @@ class QuizFinale extends React.Component {
         return (
             <Panel id={id}>
                 <PanelHeader
-                    left={<PanelHeaderBack onClick={() => setPage("quiz", "list")}/>}
+                    left={<PanelHeaderBack onClick={() => setStory("quiz", "list")}/>}
                 >
                     Результаты
                 </PanelHeader>

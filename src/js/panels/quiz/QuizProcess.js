@@ -142,7 +142,7 @@ class QuizProcess extends React.Component {
     }
 
     render() {
-        const {id, setPage} = this.props;
+        const {id, setStory} = this.props;
         const quiz = this.state.quiz.quiz
         const tech = this.state.quiz.tech
         const currentQuestion = quiz.questions[tech.next]
@@ -150,7 +150,7 @@ class QuizProcess extends React.Component {
         return (
             <Panel id={id}>
                 <PanelHeader
-                    left={<PanelHeaderBack onClick={() => setPage("quiz", "list")}/>}
+                    left={<PanelHeaderBack onClick={() => setStory("quiz", "list")}/>}
                 >
                     {quiz.name}
                 </PanelHeader>
