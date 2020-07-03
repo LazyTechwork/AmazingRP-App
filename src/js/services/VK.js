@@ -4,7 +4,7 @@ import {store} from "../../index";
 
 import {setColorScheme, setAccessToken} from "../store/vk/actions";
 
-const APP_ID = 7523016;
+const APP_ID = 7528915;
 const API_VERSION = '5.92';
 
 export const initApp = () => (dispatch) => {
