@@ -10,6 +10,7 @@ import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28Profile from '@vkontakte/icons/dist/28/profile';
 import Icon28GiftOutline from '@vkontakte/icons/dist/28/gift_outline';
+import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 
 import MorePanelBase from './js/panels/more/base';
 import MorePanelExample from './js/panels/more/example';
@@ -32,6 +33,7 @@ import bridge from "@vkontakte/vk-bridge";
 import FAQPanel from "./js/panels/profile/FAQPanel";
 import QuizPanel from "./js/panels/quiz/QuizPanel";
 import QuizProcess from "./js/panels/quiz/QuizProcess";
+import RadioPanel from "./js/panels/radio/RadioPanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -591,6 +593,10 @@ class App extends React.Component {
                     selected={activeStory === 'quiz'}
                 ><Icon28GiftOutline/></TabbarItem>
                 <TabbarItem
+                    onClick={() => setStory('radio', 'base')}
+                    selected={activeStory === 'radio'}
+                ><Icon28HeadphonesOutline/></TabbarItem>
+                <TabbarItem
                     onClick={() => setStory('profile', 'base')}
                     selected={activeStory === 'profile'}
                 ><Icon28Profile/></TabbarItem>
@@ -614,6 +620,19 @@ class App extends React.Component {
                         >
                             <HomePanel id="base" banners={this.state.banners} news={this.state.news}/>
                             <PostView id="postview"/>
+                        </View>
+                    </Root>
+
+
+                    <Root id="radio" activeView={activeView} popout={popout}>
+                        <View
+                            id="radio"
+                            modal={homeModals}
+                            activePanel={getActivePanel("radio")}
+                            history={history}
+                            onSwipeBack={() => goBack()}
+                        >
+                            <RadioPanel id="base" userinfo={this.state.userinfo}/>
                         </View>
                     </Root>
 
