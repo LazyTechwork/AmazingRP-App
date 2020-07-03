@@ -2,7 +2,7 @@ import bridge from "@vkontakte/vk-bridge";
 
 import {store} from "../../index";
 
-import {setColorScheme, setAccessToken} from "../store/vk/actions";
+import {setAccessToken, setColorScheme} from "../store/vk/actions";
 
 const APP_ID = 7528915;
 const API_VERSION = '5.92';
@@ -68,6 +68,10 @@ export const groupsGet = () => {
         "count": "100"
     });
 };
+
+export const shareOnWall = (params) => {
+    return bridge.send("VKWebAppShowWallPostBox", params);
+}
 
 export const APICall = (method, params) => {
     params['access_token'] = store.getState().vkui.accessToken;
