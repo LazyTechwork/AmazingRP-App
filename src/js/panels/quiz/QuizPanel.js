@@ -3,17 +3,12 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Panel, PanelHeader, Snackbar} from "@vkontakte/vkui"
+import {Button, Cell, Panel, PanelHeader} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
-import Icon16Done from '@vkontakte/icons/dist/16/done';
 import {randomInteger} from "../../services/_functions";
 
 const shuffler = () => Math.random() - 0.5
-
-const blueBackground = {
-    backgroundColor: 'var(--accent)'
-};
 
 class QuizPanel extends React.Component {
 

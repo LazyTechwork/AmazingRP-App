@@ -33,7 +33,7 @@ class RadioPanel extends React.Component {
     }
 
     render() {
-        const {id, setPage, setStory} = this.props;
+        const {id} = this.props;
 
         return (
             <Panel id={id}>
