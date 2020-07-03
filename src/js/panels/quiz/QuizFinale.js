@@ -24,7 +24,7 @@ class QuizFinale extends React.Component {
     shareResult() {
         const quiz = this.state.quiz
         VK.shareOnWall({
-            message: `Я прошёл викторину «${quiz.quiz}» с неплохим результатом (${quiz.rightAnswers} из ${quiz.totalAnswers})! \n Приглашаю пройти и тебя!`,
+            message: `Я прошёл викторину «${quiz.quiz}» с неплохим результатом (${quiz.rightAnswers} из ${quiz.totalAnswers})!\nПриглашаю пройти и тебя!`,
             attachments: ["https://vk.com/app7528915"]
         });
     }
