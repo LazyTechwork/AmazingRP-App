@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider, Placeholder} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Div, Panel, PanelHeader, Placeholder, Slider} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
@@ -47,8 +47,8 @@ class RadioPanel extends React.Component {
                         description="Официальное радио"
                         style={{marginBottom: 64}}
                         asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{this.state.isPlaying ?
-                            <Icon28Pause fill="var(--accent)"/> :
-                            <Icon28Play fill="var(--accent)"/>}</Button>}
+                            <Icon28Pause/> :
+                            <Icon28Play/>}</Button>}
                         bottomContent={
                             <Slider
                                 min={0}
@@ -60,7 +60,7 @@ class RadioPanel extends React.Component {
                     </Cell>
 
                     <Placeholder
-                        icon={<Icon28HeadphonesOutline width={56} height={56} />}
+                        icon={<Icon28HeadphonesOutline width={56} height={56}/>}
                         header="Другие радиостанции"
                     >
                         Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
