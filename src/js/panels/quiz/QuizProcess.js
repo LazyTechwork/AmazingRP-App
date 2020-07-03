@@ -154,8 +154,8 @@ class QuizProcess extends React.Component {
                 >
                     {quiz.name}
                 </PanelHeader>
-                <Div>
-                    <Title level="1" weight="semibold" style={{marginBottom: 16}}>{currentQuestion.name}</Title>
+                <Div style={{marginTop: 64}}>
+                    <Title level="1" weight="semibold" style={{marginBottom: 32, textAlign: "center"}}>{currentQuestion.name}</Title>
                     {currentQuestion.answers.map((ans, index) => (<div>
                         <Button
                             stretched
@@ -171,8 +171,8 @@ class QuizProcess extends React.Component {
                         >{ans.name}</Button>
                     </div>))}
                     {this.state.answered &&
-                    <Button onClick={() => this.nextQuestion()} stretched style={{marginTop: 16}}>Следующий
-                        вопрос {this.state.isRightAnswer ? `... ${this.state.timer}` : ""}</Button>}
+                    <div><Button size="l" onClick={() => this.nextQuestion()} stretched style={{marginTop: 16}}>Следующий
+                        вопрос {this.state.isRightAnswer ? `... ${this.state.timer}` : ""}</Button></div>}
                 </Div>
 
                 {this.state.snackbar}
