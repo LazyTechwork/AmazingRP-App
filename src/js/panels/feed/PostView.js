@@ -18,7 +18,7 @@ class PostView extends React.Component {
 
     render() {
         const {id, goBack} = this.props;
-        const {title, content} = this.state.post;
+        const {title, content, url} = this.state.post;
 
         return (
             <Panel id={id}>
@@ -30,6 +30,7 @@ class PostView extends React.Component {
                 <Div>
                     <Title level="1" weight="semibold" style={{marginBottom: 16}}>{title}</Title>
                     <Text weight="regular" style={{marginBottom: 16}}>{content}</Text>
+                    <iframe width="420" height="315" src={url}></iframe>
                 </Div>
             </Panel>
         );
