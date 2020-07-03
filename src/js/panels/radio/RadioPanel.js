@@ -3,15 +3,32 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Cell, Div, Panel, PanelHeader, Slider} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
+import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 
 class RadioPanel extends React.Component {
 
     state = {
-        volume: 0.5
+        volume: 0.5,
+        isPlaying: false,
+        ...this.props.inputData["radio_volume"]
+    }
+
+    componentWillUnmount() {
+        this.props.setFormData("radio_volume", {volume: this.state.volume})
+    }
+
+    toggleRadio() {
+        this.setState({isPlaying: !this.state.isPlaying})
+        this._radio.volume = this.state.volume
+    }
+
+    volumeChange(volume) {
+        this.setState({volume})
+        this._radio.volume = this.state.volume
     }
 
     render() {
@@ -27,22 +44,31 @@ class RadioPanel extends React.Component {
                                         src="https://sun9-60.userapi.com/Lt-G-lLRG3cM7LeT_AKb5I4ai0H22cyXhdar-w/qU6dZKESAZA.jpg"
                                         size={80}/>}
                         description="Официальное радио"
-                        asideContent={<Icon28Play fill="var(--accent)"/>}
+                        asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{this.state.isPlaying ?
+                            <Icon28Pause fill="var(--accent)"/> :
+                            <Icon28Play fill="var(--accent)"/>}</Button>}
                         bottomContent={
                             <Slider
                                 min={0}
                                 max={1}
                                 value={Number(this.state.volume)}
-                                onChange={volume => this.setState({volume})}
+                                onChange={volume => this.volumeChange(volume)}
                             />}>
                         Amazing Live
                     </Cell>
                 </Div>
+                <audio src={this.state.isPlaying ? "https://radio.amazing-rp.ru/live" : ""} autoPlay={true}
+                       ref={(a) => this._radio = a}/>
             </Panel>
         );
     }
-
 }
+
+const mapStateToProps = (state) => {
+    return {
+        inputData: state.formData.forms,
+    };
+};
 
 const mapDispatchToProps = {
     setPage,
@@ -54,4 +80,4 @@ const mapDispatchToProps = {
     setFormData
 };
 
-export default connect(null, mapDispatchToProps)(RadioPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(RadioPanel);
