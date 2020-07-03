@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {goBack, setPage, setStory} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
 
-import {Div, Panel, PanelHeader, PanelHeaderBack, Text, Title, Button} from "@vkontakte/vkui";
+import {Button, Div, Panel, PanelHeader, PanelHeaderBack, Text, Title} from "@vkontakte/vkui";
+import * as VK from "../../services/VK";
 
 class QuizFinale extends React.Component {
 
@@ -18,6 +19,14 @@ class QuizFinale extends React.Component {
 
     componentWillUnmount() {
         this.props.setFormData("quizresults", null)
+    }
+
+    shareResult() {
+        const quiz = this.state.quiz
+        VK.shareOnWall({
+            message: `Я прошёл викторину «${quiz.quiz}» с неплохим результатом (${quiz.rightAnswers} из ${quiz.totalAnswers})! \n Приглашаю пройти и тебя!`,
+            attachments: ["https://vk.com/app7528915"]
+        });
     }
 
     render() {
@@ -39,8 +48,10 @@ class QuizFinale extends React.Component {
                     <Text weight="regular" style={{marginBottom: 16}}>Отвечено правильно: {quiz.rightAnswers}</Text>
                 </Div>
                 <Div style={{display: 'flex'}}>
-                    <Button size="l" stretched style={{ marginRight: 8 }}>Поделиться результатом</Button>
-                    <Button size="l" stretched mode="secondary" onClick={()=>setStory("quiz", "list")}>Другие викторины</Button>
+                    <Button size="l" stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
+                        результатом</Button>
+                    <Button size="l" stretched mode="secondary" onClick={() => setStory("quiz", "list")}>Другие
+                        викторины</Button>
                 </Div>
                 {this.state.snackbar}
             </Panel>
