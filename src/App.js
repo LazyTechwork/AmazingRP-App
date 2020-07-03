@@ -115,7 +115,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Что значит термин - \"DM\" (DeathMatch)?",
+                        name: "Что значит термин - \"DM\" (DeathMatch)?",
                         answers: [
                             {
                                 name: "Причинение ущерба здоровью персонажа с весомой игровой причины"
@@ -127,7 +127,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Что значит термин - \"TK\" (TeamKill)?",
+                        name: "Что значит термин - \"TK\" (TeamKill)?",
                         answers: [
                             {
                                 name: "Причинение ущерба здоровью члена своей фракции с весомой на то игровой причины"
@@ -139,7 +139,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Что значит термин - \"BH\" (BunnyHop)?",
+                        name: "Что значит термин - \"BH\" (BunnyHop)?",
                         answers: [
                             {
                                 name: "Убийство на место появления игрока"
@@ -210,7 +210,9 @@ class App extends React.Component {
                                 name: "Не ролевые трюки на транспорте"
                             },
                         ]
-                    },
+                    }
+                ]
+            },
             {
                 id: 2,
                 name: "Игровой мод",
@@ -265,7 +267,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Как установить мигалку на служебное транспортное средство?",
+                        name: "Как установить мигалку на служебное транспортное средство?",
                         answers: [
                             {
                                 name: "/frac"
@@ -277,7 +279,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Как снять с себя бронежилет?",
+                        name: "Как снять с себя бронежилет?",
                         answers: [
                             {
                                 name: "/undearm"
@@ -289,7 +291,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                         name: "Как заправить цистерну в ЕCC (Единая служба спасения)?",
+                        name: "Как заправить цистерну в ЕCC (Единая служба спасения)?",
                         answers: [
                             {
                                 name: "/lmenu"
@@ -349,7 +351,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                     name: "На что влияет судимость?",
+                        name: "На что влияет судимость?",
                         answers: [
                             {
                                 name: "Судимость добавляет сумму к оплате услуги адвоката"
@@ -361,7 +363,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                       name: "С помощью какой команды можно поставить музыкальный центр?",
+                        name: "С помощью какой команды можно поставить музыкальный центр?",
                         answers: [
                             {
                                 name: "/audiomsg"
@@ -373,7 +375,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                       name: "Когда проходит рестарт серверов AMAZING?",
+                        name: "Когда проходит рестарт серверов AMAZING?",
                         answers: [
                             {
                                 name: "04:05"
@@ -421,7 +423,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                           name: "Сколько стоит прокрутить золотую рулетку 1 раз?",
+                        name: "Сколько стоит прокрутить золотую рулетку 1 раз?",
                         answers: [
                             {
                                 name: "25 кредитов"
@@ -433,7 +435,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                            name: "Какого сервера не существовало никогда",
+                        name: "Какого сервера не существовало никогда",
                         answers: [
                             {
                                 name: "Amazing AZURE"
@@ -686,6 +688,7 @@ class App extends React.Component {
             </ConfigProvider>
         );
     }
+
 }
 
 const mapStateToProps = (state) => {
