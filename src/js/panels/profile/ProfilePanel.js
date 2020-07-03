@@ -49,9 +49,7 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" onClick={() => {
-                        window.open("https://amazing-rp.ru/start")
-                    }}>Начать игру</Button>}
+                    actions={<Button mode="overlay_primary" href="https://amazing-rp.ru/start" target="_blank">Начать игру</Button>}
                 />
 
                 <Banner

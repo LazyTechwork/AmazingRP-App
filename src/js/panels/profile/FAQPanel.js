@@ -236,9 +236,8 @@ class FAQPanel extends React.Component {
 
                     <Title level="1" weight="semibold" style={{marginTop: 16, marginBottom: 16}}>Задайте вопрос</Title>
                     <Text weight="regular">Так и не нашли ответ на свой вопрос?</Text>
-                    <Button before={<Icon28WriteSquareOutline/>} style={{marginTop: 16}} size="xl" onClick={() => {
-                        window.open('https://vk.me/public196785510')
-                    }} mode="outline">Написать нам</Button>
+                    <Button before={<Icon28WriteSquareOutline/>} style={{marginTop: 16}} size="xl"
+                            href="https://vk.me/public196785510" target="_blank" mode="outline">Написать нам</Button>
                 </Div>
             </Panel>
         );
