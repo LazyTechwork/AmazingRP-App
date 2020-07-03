@@ -16,6 +16,10 @@ class QuizFinale extends React.Component {
         };
     }
 
+    componentWillUnmount() {
+        this.props.setFormData("quizresults", null)
+    }
+
     render() {
         const {id, setPage} = this.props;
         const quiz = this.state.quiz
@@ -36,7 +40,7 @@ class QuizFinale extends React.Component {
                 </Div>
                 <Div style={{display: 'flex'}}>
                     <Button size="l" stretched style={{ marginRight: 8 }}>Поделиться результатом</Button>
-                    <Button size="l" stretched mode="secondary">Другие викторины</Button>
+                    <Button size="l" stretched mode="secondary" onClick={()=>setPage("quiz", "list")}>Другие викторины</Button>
                 </Div>
                 {this.state.snackbar}
             </Panel>
