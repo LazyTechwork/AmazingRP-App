@@ -3,11 +3,12 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider, Placeholder} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
+import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 
 class RadioPanel extends React.Component {
 
@@ -44,6 +45,7 @@ class RadioPanel extends React.Component {
                                         src="https://sun9-60.userapi.com/Lt-G-lLRG3cM7LeT_AKb5I4ai0H22cyXhdar-w/qU6dZKESAZA.jpg"
                                         size={80}/>}
                         description="Официальное радио"
+                        style={{marginBottom: 64}}
                         asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{this.state.isPlaying ?
                             <Icon28Pause fill="var(--accent)"/> :
                             <Icon28Play fill="var(--accent)"/>}</Button>}
@@ -56,6 +58,13 @@ class RadioPanel extends React.Component {
                             />}>
                         Amazing Live
                     </Cell>
+
+                    <Placeholder
+                        icon={<Icon28HeadphonesOutline width={56} height={56} />}
+                        header="Другие радиостанции"
+                    >
+                        Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
+                    </Placeholder>
                 </Div>
                 <audio src={this.state.isPlaying ? "https://radio.amazing-rp.ru/live" : ""} autoPlay={true}
                        ref={(a) => this._radio = a}/>
