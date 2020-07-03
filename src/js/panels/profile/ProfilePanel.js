@@ -37,7 +37,7 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="GREEN сервер"
-                    subheader="Наша личная рекомендация для начала игры!"
+                    subheader="Мы рекомендуем"
                     background={
                         <div
                             style={{
@@ -56,7 +56,6 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="Викторины"
-                    subheader={<span>Попробуйте наши викторины на знание <br/> игровой вселенной Криминальной России!</span>}
                     background={
                         <div
                             style={{
@@ -77,7 +76,6 @@ class ProfilePanel extends React.Component {
                     mode="image"
                     size="m"
                     header="Нужна помощь?"
-                    subheader="Обратитесь к нашей команде поддержки!"
                     background={
                         <div
                             style={{
@@ -91,7 +89,7 @@ class ProfilePanel extends React.Component {
                     }
                     actions={<Button mode="overlay_primary" onClick={() => {
                         setPage("profile", "faq")
-                    }}>Помогите!</Button>}
+                    }}>Напишите нам</Button>}
                 />
             </Panel>
         );
