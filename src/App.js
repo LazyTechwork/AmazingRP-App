@@ -9,7 +9,7 @@ import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28Profile from '@vkontakte/icons/dist/28/profile';
-import Icon28GiftOutline from '@vkontakte/icons/dist/28/gift_outline';
+import Icon20NarrativeOutline from '@vkontakte/icons/dist/20/narrative_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 
 import MorePanelBase from './js/panels/more/base';
@@ -55,7 +55,7 @@ class App extends React.Component {
                 "id": 2,
                 "url": "#",
                 "image": {
-                    "url": "https://i.ibb.co/M9ZKzJw/31b586edfc8ddca1d4927f6249f3ffd8f43e593219ba4f9cd3c9f20877f21a7f.png",
+                    "url": "https://i.ibb.co/NsXL0Hx/Vz-Lq-Rh-TXVU.jpg",
                     "thumb": ""
                 }
             },
@@ -63,7 +63,63 @@ class App extends React.Component {
                 "id": 3,
                 "url": "#",
                 "image": {
-                    "url": "https://i.ibb.co/NsXL0Hx/Vz-Lq-Rh-TXVU.jpg",
+                    "url": "https://i.ibb.co/vqRQTD7/screen-go-1.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 4,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/R67W2SJ/screen-go-2.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 5,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/VmgnVGc/screen-go-3.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 6,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/zbvjY8n/screen-go-5.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 7,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/SdxLk3y/screen-go-6.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 8,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/m5wbrGP/screen-go-7.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 9,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/hHXyC5J/screen-go-4.jpg",
+                    "thumb": ""
+                }
+            },
+            {
+                "id": 10,
+                "url": "#",
+                "image": {
+                    "url": "https://i.ibb.co/M9ZKzJw/31b586edfc8ddca1d4927f6249f3ffd8f43e593219ba4f9cd3c9f20877f21a7f.png",
                     "thumb": ""
                 }
             }
@@ -296,7 +352,7 @@ class App extends React.Component {
                             },
                         ]
                     }, {
-                        name: "Как открыть мень дальнобойщика?",
+                        name: "Как открыть меню дальнобойщика?",
                         answers: [
                             {
                                 name: "/job"
@@ -377,30 +433,6 @@ class App extends React.Component {
                                 right: true
                             }, {
                                 name: "Менять клиренс авто можно только автомобилях ВАЗ."
-                            },
-                        ]
-                    }, {
-                        name: "На что влияет судимость?",
-                        answers: [
-                            {
-                                name: "Судимость добавляет сумму к оплате услуги адвоката"
-                            }, {
-                                name: "Каждая судимость добавляет +10 минут к времени ареста",
-                                right: true
-                            }, {
-                                name: "При получения 3-х судимостей выдается игровое предупреждение"
-                            },
-                        ]
-                    }, {
-                        name: "На что влияет судимость?",
-                        answers: [
-                            {
-                                name: "Судимость добавляет сумму к оплате услуги адвоката"
-                            }, {
-                                name: "Каждая судимость добавляет +10 минут к времени ареста",
-                                right: true
-                            }, {
-                                name: "При получения 3-х судимостей выдается игровое предупреждение"
                             },
                         ]
                     }, {
@@ -525,50 +557,6 @@ class App extends React.Component {
                         ]
                     }
                 ]
-            },
-            {
-                id: 3,
-                name: "Тест",
-                description: "Тест",
-                questions: [
-                    {
-                        name: "Как добавить игрока в чёрный список звонков?",
-                        answers: [
-                            {
-                                name: "/blacklist"
-                            }, {
-                                name: "/addbl",
-                                right: true
-                            }, {
-                                name: "/bl"
-                            },
-                        ]
-                    }, {
-                        name: "Как продать дом?",
-                        answers: [
-                            {
-                                name: "/house"
-                            }, {
-                                name: "/sellhouse",
-                                right: true
-                            }, {
-                                name: "/home"
-                            },
-                        ]
-                    }, {
-                        name: "Как открыть мень дальнобойщика?",
-                        answers: [
-                            {
-                                name: "/job"
-                            }, {
-                                name: "/dalno",
-                                right: true
-                            }, {
-                                name: "/jobs"
-                            },
-                        ]
-                    }
-                ]
             }
         ]
     }
@@ -660,7 +648,7 @@ class App extends React.Component {
                 <TabbarItem
                     onClick={() => setStory('quiz', 'list')}
                     selected={activeStory === 'quiz'}
-                ><Icon28GiftOutline/></TabbarItem>
+                ><Icon20NarrativeOutline/></TabbarItem>
                 <TabbarItem
                     onClick={() => setStory('radio', 'base')}
                     selected={activeStory === 'radio'}
