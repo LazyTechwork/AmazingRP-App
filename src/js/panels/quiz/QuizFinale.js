@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import {goBack, setPage, setStory} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
-
 import {Button, Div, Panel, PanelHeader, PanelHeaderBack, Text, Title} from "@vkontakte/vkui";
 import * as VK from "../../services/VK";
 
@@ -48,9 +47,9 @@ class QuizFinale extends React.Component {
                     <Text weight="regular" style={{marginBottom: 16}}>Отвечено правильно: {quiz.rightAnswers}</Text>
                 </Div>
                 <Div style={{display: 'flex'}}>
-                    <Button size="l" stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
+                     <Button size="l" stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
                         результатом</Button>
-                    <Button size="l" stretched mode="secondary" onClick={() => setStory("quiz", "list")}>Другие
+                    <Button size="l" stretched mode="secondary" onClick={() => setStory("quiz", "list")}> Другие
                         викторины</Button>
                 </Div>
                 {this.state.snackbar}

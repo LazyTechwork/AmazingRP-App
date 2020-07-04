@@ -8,6 +8,7 @@ import {Avatar, Button, Div, Panel, PanelHeader, PanelHeaderBack, Snackbar, Titl
 import Icon16Done from '@vkontakte/icons/dist/16/done';
 import Icon16Cancel from '@vkontakte/icons/dist/16/cancel';
 import {randomInteger} from "../../services/_functions";
+import Icon24Chevron from '@vkontakte/icons/dist/24/chevron';
 
 const greenBg = {
     backgroundColor: 'var(--dynamic_green)'
