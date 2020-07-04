@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 
 import Icon24BrowserForward from '@vkontakte/icons/dist/24/browser_forward';
 
-import '../../css/onboarding.css';
+import './onboarding.css';
 
 class Onboarding extends Component {
   constructor() {

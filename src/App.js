@@ -25,7 +25,7 @@ import phone2 from './img/introduction/phone2.png';
 import phone3 from './img/introduction/phone3.png';
 import phone4 from './img/introduction/phone4.png';
 import phone5 from './img/introduction/phone5.png';
-import Onboarding from "./js/panels/onboarding/Onboarding";
+import Onboarding from "./js/panels/onboarding/Onboarding.js";
 import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
 import bridge from "@vkontakte/vk-bridge";
