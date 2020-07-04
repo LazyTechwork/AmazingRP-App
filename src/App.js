@@ -25,7 +25,7 @@ import phone2 from './img/introduction/phone2.png';
 import phone3 from './img/introduction/phone3.png';
 import phone4 from './img/introduction/phone4.png';
 import phone5 from './img/introduction/phone5.png';
-import Onboarding from "./js/components/Onboarding.jsx";
+import Onboarding from "./js/panels/onboarding/Onboarding";
 import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
 import bridge from "@vkontakte/vk-bridge";
@@ -34,6 +34,7 @@ import QuizPanel from "./js/panels/quiz/QuizPanel";
 import QuizProcess from "./js/panels/quiz/QuizProcess";
 import RadioPanel from "./js/panels/radio/RadioPanel";
 import QuizFinale from "./js/panels/quiz/QuizFinale";
+
 
 class App extends React.Component {
     constructor(props) {
