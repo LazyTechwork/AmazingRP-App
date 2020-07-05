@@ -4,7 +4,19 @@ import {connect} from 'react-redux';
 import {goBack, setPage, setStory} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
 
-import {Avatar, Button, Div, Panel, PanelHeader, PanelHeaderBack, Snackbar, Title} from "@vkontakte/vkui";
+import {
+    Avatar,
+    Button,
+    Card,
+    CardGrid,
+    Div,
+    Headline,
+    Panel,
+    PanelHeader,
+    PanelHeaderBack,
+    Snackbar,
+    Title
+} from "@vkontakte/vkui";
 import Icon16Done from '@vkontakte/icons/dist/16/done';
 import Icon16Cancel from '@vkontakte/icons/dist/16/cancel';
 import {randomInteger} from "../../services/_functions";
@@ -22,6 +34,9 @@ class QuizProcess extends React.Component {
     constructor(props) {
         super(props);
 
+        if (!props.inputData['quiz']) {
+            this.props.setStory("quiz", "list")
+        }
         this.state = {
             quiz: props.inputData['quiz'] || null,
             answered: false,
@@ -141,8 +156,14 @@ class QuizProcess extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        this.props.setFormData("quiz", null)
+    }
+
     render() {
         const {id, setStory} = this.props;
+        if (!this.state.quiz)
+            return (<Panel id={id}/>)
         const quiz = this.state.quiz.quiz
         const tech = this.state.quiz.tech
         const currentQuestion = quiz.questions[tech.next]
@@ -154,7 +175,22 @@ class QuizProcess extends React.Component {
                 >
                     {quiz.name}
                 </PanelHeader>
-                <Div style={{marginTop: 64}}>
+                <Div style={{marginTop: 32}}>
+                    <CardGrid style={{textAlign: "center", marginBottom: 16}}>
+                        <Card size="m" mode="outline">
+                            <Div style={{paddingTop: 8, paddingBottom: 8}}>
+                                <Headline weight="semibold">Вопрос</Headline>
+                                <Title level="1"
+                                       weight="heavy">{tech.passed.length + (this.state.answered ? 0 : 1)}/{quiz.questions.length}</Title>
+                            </Div>
+                        </Card>
+                        <Card size="m" mode="outline">
+                            <Div style={{paddingTop: 8, paddingBottom: 8}}>
+                                <Headline weight="semibold">Отвечено</Headline>
+                                <Title level="1" weight="heavy">{tech.passed.length}</Title>
+                            </Div>
+                        </Card>
+                    </CardGrid>
                     <Title level="1" weight="semibold"
                            style={{marginBottom: 32, textAlign: "center"}}>{currentQuestion.name}</Title>
                     {currentQuestion.answers.map((ans, index) => (<div>
