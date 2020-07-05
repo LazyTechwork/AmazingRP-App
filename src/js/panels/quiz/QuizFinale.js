@@ -52,6 +52,8 @@ class QuizFinale extends React.Component {
                         викторины</Button>
                 </Div>
                 {this.state.snackbar}
+
+                <div className="panelDeco deco-3" style={{backgroundSize: "40vh"}}/>
             </Panel>
         );
     }
