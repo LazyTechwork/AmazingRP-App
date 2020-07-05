@@ -1,16 +1,18 @@
 import {
     APP_VIEW_HIDE, APP_VIEW_RESTORE,
     SET_ACCESS_TOKEN,
-    SET_ACTIVE_TAB,
+    SET_ACTIVE_TAB, SET_APP_PLATFORM,
     SET_COLOR_SCHEME,
     SET_SCROLL_POSITION,
     SET_SCROLL_POSITION_BY_ID
 } from './actionTypes';
+import {WEB} from "./platforms";
 
 const initialState = {
     accessToken: undefined,
     colorScheme: 'client_light',
     isAppOpen: true,
+    platform: WEB,
 
     activeTab: [],
     componentScroll: []
@@ -86,6 +88,13 @@ export const vkuiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isAppOpen: true
+            }
+        }
+
+        case SET_APP_PLATFORM: {
+            return {
+                ...state,
+                platform: action.payload
             }
         }
 
