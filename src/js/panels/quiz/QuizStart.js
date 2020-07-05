@@ -64,11 +64,9 @@ class QuizStart extends React.Component {
                     Викторина
                 </PanelHeader>
                 <Div style={{textAlign: "center", marginTop: 64}}>
-                    <Title level="2" weight="regular" style={{marginBottom: 32}}>Начинаем нашу
+                    <Title level="2" weight="regular">Начинаем нашу
                         викторину &laquo;{quiz.quiz.name}&raquo;</Title>
-                    <Text weight="regular">Всего вопросов: {quiz.quiz.questions.length}</Text>
-
-
+                    <Text weight="regular" style={{marginBottom: 32}}>Всего вопросов: {quiz.quiz.questions.length}</Text>
                     <Title level="1" weight="heavy">{this.state.timer}</Title>
                 </Div>
                 <Div>
