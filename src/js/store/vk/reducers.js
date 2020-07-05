@@ -1,4 +1,5 @@
 import {
+    APP_VIEW_HIDE, APP_VIEW_RESTORE,
     SET_ACCESS_TOKEN,
     SET_ACTIVE_TAB,
     SET_COLOR_SCHEME,
@@ -9,6 +10,7 @@ import {
 const initialState = {
     accessToken: undefined,
     colorScheme: 'client_light',
+    isAppOpen: true,
 
     activeTab: [],
     componentScroll: []
@@ -71,6 +73,20 @@ export const vkuiReducer = (state = initialState, action) => {
                     }
                 },
             };
+        }
+
+        case APP_VIEW_HIDE: {
+            return {
+                ...state,
+                isAppOpen: false
+            }
+        }
+
+        case APP_VIEW_RESTORE: {
+            return {
+                ...state,
+                isAppOpen: true
+            }
         }
 
         default: {

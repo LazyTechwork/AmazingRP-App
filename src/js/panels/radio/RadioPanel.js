@@ -66,7 +66,7 @@ class RadioPanel extends React.Component {
                         Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
                     </Placeholder>
                 </Div>
-                <audio src={this.state.isPlaying ? "https://radio.amazing-rp.ru/live" : ""} autoPlay={true}
+                <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""} autoPlay={true}
                        ref={(a) => this._radio = a}/>
             </Panel>
         );
@@ -76,6 +76,7 @@ class RadioPanel extends React.Component {
 const mapStateToProps = (state) => {
     return {
         inputData: state.formData.forms,
+        isAppOpen: state.vkui.isAppOpen
     };
 };
 

@@ -1,7 +1,9 @@
 import {
-    SET_COLOR_SCHEME,
+    APP_VIEW_HIDE,
+    APP_VIEW_RESTORE,
     SET_ACCESS_TOKEN,
     SET_ACTIVE_TAB,
+    SET_COLOR_SCHEME,
     SET_SCROLL_POSITION,
     SET_SCROLL_POSITION_BY_ID
 } from './actionTypes';
@@ -12,6 +14,12 @@ export const setColorScheme = (scheme) => (
         payload: scheme
     }
 );
+
+export const updateAppViewState = (hidden = false) => (
+    {
+        type: hidden ? APP_VIEW_HIDE : APP_VIEW_RESTORE
+    }
+)
 
 export const setAccessToken = (accessToken) => (
     {

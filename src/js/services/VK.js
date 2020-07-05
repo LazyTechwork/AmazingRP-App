@@ -2,7 +2,7 @@ import bridge from "@vkontakte/vk-bridge";
 
 import {store} from "../../index";
 
-import {setAccessToken, setColorScheme} from "../store/vk/actions";
+import {setAccessToken, setColorScheme, updateAppViewState} from "../store/vk/actions";
 
 export const APP_ID = 7528915;
 const API_VERSION = '5.92';
@@ -10,9 +10,11 @@ const API_VERSION = '5.92';
 export const initApp = () => (dispatch) => {
     const VKConnectCallback = (e) => {
         if (e.detail.type === 'VKWebAppUpdateConfig') {
-            bridge.unsubscribe(VKConnectCallback);
-
             dispatch(setColorScheme(e.detail.data.scheme));
+        } else if (e.detail.type === 'VKWebAppViewHide') {
+            dispatch(updateAppViewState(true))
+        } else if (e.detail.type === 'VKWebAppViewRestore') {
+            dispatch(updateAppViewState(false))
         }
     };
 
