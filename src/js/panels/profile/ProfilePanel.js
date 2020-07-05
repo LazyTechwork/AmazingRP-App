@@ -55,6 +55,27 @@ class ProfilePanel extends React.Component {
                 <Banner
                     mode="image"
                     size="m"
+                    header="Терминология"
+                    subheader="&nbsp;"
+                    background={
+                        <div
+                            style={{
+                                backgroundColor: '#330867',
+                                background: 'url(https://amazing-rp.ru/assets/images/index-char-6.png), linear-gradient(-30deg, #3090d0 0%, #330867 100%)',
+                                backgroundPosition: 'right 10px top 5px, center center',
+                                backgroundSize: '150px, contain',
+                                backgroundRepeat: 'no-repeat',
+                            }}
+                        />
+                    }
+                    actions={<Button mode="overlay_primary" onClick={() => {
+                        setPage("profile", "rp")
+                    }}>Узнать всё про RolePlay</Button>}
+                />
+
+                <Banner
+                    mode="image"
+                    size="m"
                     header="Викторины"
                     subheader="&nbsp;"
                     background={
@@ -81,10 +102,10 @@ class ProfilePanel extends React.Component {
                     background={
                         <div
                             style={{
-                                backgroundColor: '#d92f2f',
-                                background: 'url(https://amazing-rp.ru/assets/images/index-char-5.png), url(https://amazing-rp.ru/assets/images/header-help.jpg)',
+                                backgroundColor: '#ad1515',
+                                background: 'url(https://amazing-rp.ru/assets/images/index-char-5.png), linear-gradient(-30deg, #d92f2f 0%, #ad1515 100%)',
                                 backgroundPosition: 'right 10px top 5px, center center',
-                                backgroundSize: '150px, cover',
+                                backgroundSize: '150px, contain',
                                 backgroundRepeat: 'no-repeat',
                             }}
                         />

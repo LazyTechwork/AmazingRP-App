@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 
 import {goBack} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
-import 'react-slidedown/lib/slidedown.css'
 import Icon28WriteSquareOutline from '@vkontakte/icons/dist/28/write_square_outline';
 import {Button, Div, Panel, PanelHeader, PanelHeaderBack, Separator, Text, Title} from "@vkontakte/vkui";
 
-class FAQPanel extends React.Component {
+class RoleplayPanel extends React.Component {
 
     render() {
         const {id, goBack} = this.props;
@@ -81,7 +80,7 @@ class FAQPanel extends React.Component {
                     <Separator style={{marginTop: 0, marginBottom: 32}}/>
 
                     <Title level="1" weight="semibold" style={{marginTop: 16, marginBottom: 16}}>Задайте вопрос</Title>
-                    <Text weight="regular">Так и не нашли ответ на свой вопрос?</Text>
+                    <Text weight="regular">Появились вопросы после прочтения? Напишите нам и мы расскажем всё в подробностях!</Text>
                     <Button before={<Icon28WriteSquareOutline/>} style={{marginTop: 16}} size="xl"
                             href="https://vk.me/public196785510" target="_blank" mode="outline">Написать нам</Button>
                 </Div>
@@ -102,4 +101,4 @@ const mapDispatchToProps = {
     goBack
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FAQPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(RoleplayPanel);

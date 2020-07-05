@@ -35,6 +35,7 @@ import QuizProcess from "./js/panels/quiz/QuizProcess";
 import RadioPanel from "./js/panels/radio/RadioPanel";
 import QuizFinale from "./js/panels/quiz/QuizFinale";
 import QuizStart from "./js/panels/quiz/QuizStart";
+import RoleplayPanel from "./js/panels/profile/RoleplayPanel";
 
 
 class App extends React.Component {
@@ -692,6 +693,7 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <ProfilePanel id="base" userinfo={this.state.userinfo}/>
+                            <RoleplayPanel id="rp"/>
                             <FAQPanel id="faq"/>
                         </View>
                     </Root>
