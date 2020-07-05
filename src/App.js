@@ -12,9 +12,6 @@ import Icon28FireOutline from '@vkontakte/icons/dist/28/fire_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 
-import MorePanelBase from './js/panels/more/base';
-import MorePanelExample from './js/panels/more/example';
-
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
 import HomePanel from "./js/panels/feed/HomePanel";
@@ -710,27 +707,6 @@ class App extends React.Component {
                             <QuizStart id="start"/>
                             <QuizProcess id="quiz"/>
                             <QuizFinale id="finale"/>
-                        </View>
-                    </Root>
-
-                    <Root id="more" activeView={activeView} popout={popout}>
-                        <View
-                            id="more"
-                            modal={homeModals}
-                            activePanel={getActivePanel("more")}
-                            history={history}
-                            onSwipeBack={() => goBack()}
-                        >
-                            <MorePanelBase id="callmodal"/>
-                        </View>
-                        <View
-                            id="modal"
-                            modal={homeModals}
-                            activePanel={getActivePanel("modal")}
-                            history={history}
-                            onSwipeBack={() => goBack()}
-                        >
-                            <MorePanelExample id="filters"/>
                         </View>
                     </Root>
 
