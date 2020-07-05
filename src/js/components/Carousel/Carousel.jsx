@@ -81,7 +81,7 @@ class Carousel extends Component {
             slidesToScroll: 1,
             dotsClass: 'Carousel__dot-list',
             autoplay: !!this.props.autoplay,
-            autoplaySpeed: 5000,
+            autoplaySpeed: this.props.autoplaySpeed ?? 5000,
             onSwipe: () => {
                 this.justSwiped = true;
             }

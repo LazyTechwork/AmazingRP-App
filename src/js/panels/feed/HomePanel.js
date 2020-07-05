@@ -58,6 +58,7 @@ class HomePanel extends React.Component {
                 <Carousel
                     list={banners}
                     autoplay
+                    autoplaySpeed={2500}
                     sizePadding={52.63}
                 />
                 <div className="posts">{posts}</div>
