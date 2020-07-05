@@ -8,9 +8,9 @@ import * as VK from './js/services/VK';
 import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@vkontakte/vkui";
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
-import Icon28Profile from '@vkontakte/icons/dist/28/profile';
 import Icon28FireOutline from '@vkontakte/icons/dist/28/fire_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
+import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 
 import MorePanelBase from './js/panels/more/base';
 import MorePanelExample from './js/panels/more/example';
@@ -645,7 +645,7 @@ class App extends React.Component {
                 <TabbarItem
                     onClick={() => setStory('profile', 'base')}
                     selected={activeStory === 'profile'}
-                ><Icon28Profile/></TabbarItem>
+                ><Icon28Menu/></TabbarItem>
                 {/*<TabbarItem
                     onClick={() => setStory('more', 'callmodal')}
                     selected={activeStory === 'more'}

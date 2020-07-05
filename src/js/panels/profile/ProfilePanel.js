@@ -22,7 +22,7 @@ class ProfilePanel extends React.Component {
 
         return (
             <Panel id={id}>
-                <PanelHeader>Профиль</PanelHeader>
+                <PanelHeader>Меню</PanelHeader>
                 {/*{userinfo && <RichCell
                     disabled
                     multiline
