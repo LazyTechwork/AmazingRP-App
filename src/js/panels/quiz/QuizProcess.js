@@ -46,6 +46,10 @@ class QuizProcess extends React.Component {
             interval: null,
             snackbar: null
         };
+
+        if (this.state.quiz && !this.state.quiz.started) {
+            this.props.setStory("quiz", "list")
+        }
     }
 
     rightAnswer(index) {

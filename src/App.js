@@ -34,6 +34,7 @@ import QuizPanel from "./js/panels/quiz/QuizPanel";
 import QuizProcess from "./js/panels/quiz/QuizProcess";
 import RadioPanel from "./js/panels/radio/RadioPanel";
 import QuizFinale from "./js/panels/quiz/QuizFinale";
+import QuizStart from "./js/panels/quiz/QuizStart";
 
 
 class App extends React.Component {
@@ -704,6 +705,7 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <QuizPanel id="list" quizes={this.state.quizes}/>
+                            <QuizStart id="start"/>
                             <QuizProcess id="quiz"/>
                             <QuizFinale id="finale"/>
                         </View>

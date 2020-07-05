@@ -46,9 +46,9 @@ class QuizPanel extends React.Component {
                                     next: randomInteger(0, quiz.questions.length - 1),
                                     rightAnswers: 0,
                                     passed: []
-                                }
+                                }, started: false
                             })
-                            setPage("quiz", "quiz")
+                            setPage("quiz", "start")
                         }}>Принять участие</Button>
                     }
                 >
