@@ -6,6 +6,9 @@ import {setFormData} from "../../store/formData/actions";
 import {Button, Div, Panel, PanelHeader, PanelHeaderBack, Text, Title} from "@vkontakte/vkui";
 import * as VK from "../../services/VK";
 
+import Icon28ShareOutline from '@vkontakte/icons/dist/28/share_outline';
+import Icon20EducationOutline from '@vkontakte/icons/dist/20/education_outline';
+
 class QuizFinale extends React.Component {
 
     constructor(props) {
@@ -14,10 +17,6 @@ class QuizFinale extends React.Component {
         this.state = {
             quiz: props.inputData['quizresults'] || null
         };
-    }
-
-    componentWillUnmount() {
-        this.props.setFormData("quizresults", null)
     }
 
     shareResult() {
@@ -47,9 +46,9 @@ class QuizFinale extends React.Component {
                     <Text weight="regular" style={{marginBottom: 16}}>Отвечено правильно: {quiz.rightAnswers}</Text>
                 </Div>
                 <Div style={{display: 'flex'}}>
-                     <Button size="l" stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
+                     <Button size="l" before={<Icon28ShareOutline/>} stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
                         результатом</Button>
-                    <Button size="l" stretched mode="secondary" onClick={() => setStory("quiz", "list")}> Другие
+                    <Button size="l" before={<Icon20EducationOutline/>} stretched mode="secondary" onClick={() => setStory("quiz", "list")}> Другие
                         викторины</Button>
                 </Div>
                 {this.state.snackbar}
