@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Banner, Button, Panel, PanelHeader, RichCell} from "@vkontakte/vkui"
+import {Banner, Button, Panel, PanelHeader} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 
@@ -19,19 +19,18 @@ class ProfilePanel extends React.Component {
 
     render() {
         const {id, setPage, setStory} = this.props;
-        const userinfo = this.state.userinfo
 
         return (
             <Panel id={id}>
                 <PanelHeader>Профиль</PanelHeader>
-                {userinfo && <RichCell
+                {/*{userinfo && <RichCell
                     disabled
                     multiline
                     text="Игрок проекта"
                     before={<Avatar size={72} src={userinfo.photo_100}/>}
                 >
                     {`${userinfo.first_name} ${userinfo.last_name}`}
-                </RichCell>}
+                </RichCell>}*/}
 
                 <Banner
                     mode="image"
@@ -49,7 +48,8 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" href="https://amazing-rp.ru/start" target="_blank">Начать игру</Button>}
+                    actions={<Button mode="overlay_primary" href="https://amazing-rp.ru/start" target="_blank">Начать
+                        игру</Button>}
                 />
 
                 <Banner
