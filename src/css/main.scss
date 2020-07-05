@@ -38,3 +38,23 @@ a, div, img, p, button {
     border-radius: 10px;
   }
 }
+
+.panelDeco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+
+  &.deco-1 {
+    background: url(https://i.ibb.co/N7dmyz8/index-char-2.png) no-repeat right 15px bottom;
+    background-size: 25vh;
+  }
+
+  &.deco-2 {
+    background: url(https://i.ibb.co/b1KbL0Q/index-char-6.png) no-repeat left 15px bottom;
+    background-size: 25vh;
+  }
+}
+

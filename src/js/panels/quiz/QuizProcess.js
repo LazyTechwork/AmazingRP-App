@@ -215,6 +215,8 @@ class QuizProcess extends React.Component {
                 </Div>
 
                 {this.state.snackbar}
+
+                <div className={`panelDeco ${tech.next % 2 === 0 ? 'deco-1' : 'deco-2'}`}/>
             </Panel>
         );
     }
