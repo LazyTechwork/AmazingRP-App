@@ -9,6 +9,7 @@ import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
+import {IOS} from "../../store/vk/platforms";
 
 class RadioPanel extends React.Component {
 
@@ -45,17 +46,21 @@ class RadioPanel extends React.Component {
                                         src="https://sun9-60.userapi.com/Lt-G-lLRG3cM7LeT_AKb5I4ai0H22cyXhdar-w/qU6dZKESAZA.jpg"
                                         size={80}/>}
                         description="Официальное радио"
+                        multiline
                         style={{marginBottom: 64}}
                         asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{this.state.isPlaying ?
                             <Icon28Pause/> :
                             <Icon28Play/>}</Button>}
                         bottomContent={
-                            <Slider
-                                min={0}
-                                max={1}
-                                value={Number(this.state.volume)}
-                                onChange={volume => this.volumeChange(volume)}
-                            />}>
+                            this.props.platform === IOS ?
+                                "К сожалению, регулятор громкости не работает на устройствах под управлением iOS" :
+                                <Slider
+                                    min={0}
+                                    max={1}
+                                    value={Number(this.state.volume)}
+                                    onChange={volume => this.volumeChange(volume)}
+                                />}>
+
                         Amazing Live
                     </Cell>
 
@@ -66,7 +71,8 @@ class RadioPanel extends React.Component {
                         Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
                     </Placeholder>
                 </Div>
-                <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""} autoPlay={true}
+                <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""}
+                       autoPlay={true}
                        ref={(a) => this._radio = a}/>
             </Panel>
         );
@@ -76,7 +82,8 @@ class RadioPanel extends React.Component {
 const mapStateToProps = (state) => {
     return {
         inputData: state.formData.forms,
-        isAppOpen: state.vkui.isAppOpen
+        isAppOpen: state.vkui.isAppOpen,
+        platform: state.vkui.platform
     };
 };
 
