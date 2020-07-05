@@ -9,7 +9,7 @@ import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@
 
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28Profile from '@vkontakte/icons/dist/28/profile';
-import Icon12Fire from '@vkontakte/icons/dist/12/fire';
+import Icon28FireOutline from '@vkontakte/icons/dist/28/fire_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 
 import MorePanelBase from './js/panels/more/base';
@@ -637,7 +637,7 @@ class App extends React.Component {
                 <TabbarItem
                     onClick={() => setStory('quiz', 'list')}
                     selected={activeStory === 'quiz'}
-                ><Icon12Fire width={24} height={24}/></TabbarItem>
+                ><Icon28FireOutline/></TabbarItem>
                 <TabbarItem
                     onClick={() => setStory('radio', 'base')}
                     selected={activeStory === 'radio'}
