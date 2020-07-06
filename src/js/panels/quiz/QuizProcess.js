@@ -190,8 +190,8 @@ class QuizProcess extends React.Component {
                         </Card>
                         <Card size="m" mode="outline">
                             <Div style={{paddingTop: 8, paddingBottom: 8}}>
-                                <Headline weight="semibold">Отвечено</Headline>
-                                <Title level="1" weight="heavy">{tech.passed.length}</Title>
+                                <Headline weight="semibold">Правильно</Headline>
+                                <Title level="1" weight="heavy">{tech.rightAnswers}</Title>
                             </Div>
                         </Card>
                     </CardGrid>

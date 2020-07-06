@@ -50,7 +50,7 @@ class QuizPanel extends React.Component {
                         setPage("quiz", "start")
                     }}><Icon24Play/></Button>}
                     bottomContent={
-                        `Предыдущая игра: ${this.state.passedQuizes ? this.state.passedQuizes[quiz.id] ?? "0" : "0"}/${quiz.questions.length}`
+                        <span style={{color: 'var(--text_secondary)'}}>{`Предыдущая игра: ${this.state.passedQuizes ? this.state.passedQuizes[quiz.id] ?? "0" : "0"}/${quiz.questions.length}`}</span>
                     }
                 >
                     {quiz.name}
