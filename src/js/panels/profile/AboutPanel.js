@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {goBack} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
-import {Avatar, Div, Group, Header, Panel, PanelHeader, PanelHeaderBack, SimpleCell} from "@vkontakte/vkui";
+import {Avatar, Div, Group, Header, Panel, PanelHeader, PanelHeaderBack, SimpleCell,Caption} from "@vkontakte/vkui";
 import {APP_BUILD, APP_NAME, APP_VERSION} from "../../constants/appinfo";
 
 class AboutPanel extends React.Component {
@@ -17,7 +17,7 @@ class AboutPanel extends React.Component {
                 <PanelHeader
                     left={<PanelHeaderBack onClick={() => goBack()}/>}
                 >
-                    О нас и приложении
+                    О приложении
                 </PanelHeader>
                 <Div style={{
                     display: 'flex',
@@ -29,7 +29,8 @@ class AboutPanel extends React.Component {
                     <Avatar mode="app"
                             src="https://sun9-60.userapi.com/Lt-G-lLRG3cM7LeT_AKb5I4ai0H22cyXhdar-w/qU6dZKESAZA.jpg"
                             size={100}/><br/>
-                    {`${APP_NAME} ${APP_VERSION} (${APP_BUILD})`}
+                    {APP_NAME} <br/>
+                    <Caption level="3" weight="regular">Версия {APP_VERSION} (Билд {APP_BUILD})</Caption>
                 </Div>
                 {devinfo && <Div>
                     <Group header={<Header mode="secondary">Команда приложения</Header>}>
