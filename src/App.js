@@ -33,6 +33,9 @@ import RadioPanel from "./js/panels/radio/RadioPanel";
 import QuizFinale from "./js/panels/quiz/QuizFinale";
 import QuizStart from "./js/panels/quiz/QuizStart";
 import RoleplayPanel from "./js/panels/profile/RoleplayPanel";
+import {setAppPlatform} from "./js/store/vk/actions";
+import {APP_SECRET} from "./js/constants/appinfo";
+import AboutPanel from "./js/panels/profile/AboutPanel";
 
 
 class App extends React.Component {
@@ -42,6 +45,7 @@ class App extends React.Component {
     }
 
     state = {
+        devinfo: [],
         banners: [
             {
                 "id": 1,
@@ -551,7 +555,10 @@ class App extends React.Component {
 
     componentDidMount() {
         const {goBack, dispatch} = this.props;
+        const params = new URLSearchParams(window.location.search)
         dispatch(VK.initApp());
+        console.log(`SET PLATFORM - ${params.get('vk_platform')}`)
+        dispatch(setAppPlatform(params.get('vk_platform')))
 
         // Получаем информацию о пользователе
         bridge.send("VKWebAppGetUserInfo", {}).then(data => {
@@ -563,6 +570,21 @@ class App extends React.Component {
                     photo_100: data.photo_100
                 }
             });
+        }).catch(error => {
+            console.error(error)
+            throw error;
+        });
+
+        bridge.send("VKWebAppCallAPIMethod", {
+            "method": "users.get",
+            "request_id": "devinfo",
+            "params": {"user_ids": "242521347,595756916,448368288", "v": "5.130", "fields": "photo_100", "access_token": APP_SECRET}
+        }).then(data => {
+            console.log(data);
+            let devinfo = {}
+            for (const info of data.response)
+                devinfo[info.id] = {name: `${info.first_name} ${info.last_name}`, photo: info.photo_100}
+            this.setState({devinfo})
         }).catch(error => {
             console.error(error)
             throw error;
@@ -692,6 +714,7 @@ class App extends React.Component {
                             <ProfilePanel id="base" userinfo={this.state.userinfo}/>
                             <RoleplayPanel id="rp"/>
                             <FAQPanel id="faq"/>
+                            <AboutPanel id="about" devinfo={this.state.devinfo}/>
                         </View>
                     </Root>
 

@@ -8,7 +8,7 @@ import {
     SET_SCROLL_POSITION,
     SET_SCROLL_POSITION_BY_ID
 } from './actionTypes';
-import {ANDROID, IOS, MWEB, WEB} from "./platforms";
+import {ANDROID, IOS, MWEB, WEB} from "../../constants/platforms";
 
 export const setColorScheme = (scheme) => (
     {

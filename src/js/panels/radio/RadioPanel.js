@@ -9,7 +9,7 @@ import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
-import {IOS} from "../../store/vk/platforms";
+import {IOS} from "../../constants/platforms";
 
 class RadioPanel extends React.Component {
 

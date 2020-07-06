@@ -6,7 +6,7 @@ import {
     SET_SCROLL_POSITION,
     SET_SCROLL_POSITION_BY_ID
 } from './actionTypes';
-import {WEB} from "./platforms";
+import {WEB} from "../../constants/platforms";
 
 const initialState = {
     accessToken: undefined,

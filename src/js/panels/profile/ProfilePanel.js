@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Banner, Button, Panel, PanelHeader} from "@vkontakte/vkui"
+import {Banner, Button, Caption, Div, Panel, PanelHeader, Separator} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
+import {APP_BUILD, APP_NAME, APP_VERSION} from "../../constants/appinfo";
 
 class ProfilePanel extends React.Component {
 
@@ -114,6 +115,16 @@ class ProfilePanel extends React.Component {
                         setPage("profile", "faq")
                     }}>Напишите нам</Button>}
                 />
+
+                <Separator wide/>
+
+                <Div>
+                    <div><Button stretched mode="secondary" size="l">О нас и приложении</Button></div>
+                    <Caption level="3" weight="regular" style={{
+                        marginTop: 16,
+                        textAlign: "center"
+                    }}>{`${APP_NAME} ${APP_VERSION} (${APP_BUILD})`}</Caption>
+                </Div>
             </Panel>
         );
     }
