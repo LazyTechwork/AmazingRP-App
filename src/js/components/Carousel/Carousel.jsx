@@ -79,6 +79,7 @@ class Carousel extends Component {
             placeholders: false,
             slidesToShow: 1,
             slidesToScroll: 1,
+            pauseOnHover: true,
             dotsClass: 'Carousel__dot-list',
             autoplay: !!this.props.autoplay,
             autoplaySpeed: this.props.autoplaySpeed ?? 5000,
