@@ -18,6 +18,8 @@ class Carousel extends Component {
         this.isSingleImage = this.isSingleImage.bind(this);
         this.touchStart = this.touchStart.bind(this);
         this.preventTouch = this.preventTouch.bind(this);
+
+        this.canAnimate = true;
     }
 
     componentDidMount() {
@@ -79,7 +81,6 @@ class Carousel extends Component {
             placeholders: false,
             slidesToShow: 1,
             slidesToScroll: 1,
-            pauseOnHover: true,
             dotsClass: 'Carousel__dot-list',
             autoplay: !!this.props.autoplay,
             autoplaySpeed: this.props.autoplaySpeed ?? 5000,
