@@ -23,7 +23,7 @@ class QuizFinale extends React.Component {
         const quiz = this.state.quiz
         VK.shareOnWall({
             message: `Я прошёл викторину «${quiz.quiz}» с неплохим результатом (${quiz.rightAnswers} из ${quiz.totalAnswers})!\nПриглашаю пройти и тебя! https://vk.com/app${VK.APP_ID}`,
-            attachments: `https://vk.com/app${VK.APP_ID},photo-196785510_457239017`
+            attachments: `https://vk.com/app${VK.APP_ID},photo-196785510_457239070`
         });
     }
 
@@ -53,7 +53,7 @@ class QuizFinale extends React.Component {
                 </Div>
                 {this.state.snackbar}
 
-                <div className="panelDeco deco-3" style={{backgroundSize: "40vh"}}/>
+                <div className="panelDeco deco-4" style={{backgroundSize: "35vh"}}/>
             </Panel>
         );
     }

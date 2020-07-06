@@ -49,17 +49,22 @@ a, div, img, p, button {
 
   &.deco-1 {
     background: url(https://amazing-rp.ru/assets/images/index-char-2.png) no-repeat right 15px bottom;
-    background-size: 35vh;
+    background-size: 25vh;
   }
 
   &.deco-2 {
     background: url(https://amazing-rp.ru/assets/images/index-char-6.png) no-repeat left 15px bottom;
-    background-size: 35vh;
+    background-size: 25vh;
   }
 
   &.deco-3 {
     background: url(https://amazing-rp.ru/assets/images/index-char-1.png) no-repeat center bottom;
-    background-size: 35vh;
+    background-size: 25vh;
+  }
+
+  &.deco-4 {
+    background: url(https://amazing-rp.ru/assets/images/index-char-5.png) no-repeat center bottom;
+    background-size: 25vh;
   }
 }
 

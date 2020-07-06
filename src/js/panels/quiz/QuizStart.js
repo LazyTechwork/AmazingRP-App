@@ -73,7 +73,7 @@ class QuizStart extends React.Component {
                     <Button size="l" stretched mode="secondary" onClick={() => this.cancelStart()}>Отмена</Button>
                 </Div>
 
-                <div className="panelDeco deco-3" style={{backgroundSize: "40vh"}}/>
+                <div className="panelDeco deco-3" style={{backgroundSize: "35vh"}}/>
             </Panel>
         );
     }
