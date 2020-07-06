@@ -575,20 +575,31 @@ class App extends React.Component {
             throw error;
         });
 
-        bridge.send("VKWebAppCallAPIMethod", {
-            "method": "users.get",
-            "request_id": "devinfo",
-            "params": {"user_ids": "242521347,595756916,448368288", "v": "5.130", "fields": "photo_100", "access_token": APP_SECRET}
-        }).then(data => {
-            console.log(data);
-            let devinfo = {}
-            for (const info of data.response)
-                devinfo[info.id] = {name: `${info.first_name} ${info.last_name}`, photo: info.photo_100}
-            this.setState({devinfo})
-        }).catch(error => {
-            console.error(error)
-            throw error;
-        });
+        const lsdi = localStorage.getItem("devinfo") ? JSON.parse(localStorage.getItem("devinfo")) : null
+        if (lsdi && lsdi["expire"] >= Date.now())
+            this.setState({devinfo: lsdi})
+        else
+            bridge.send("VKWebAppCallAPIMethod", {
+                "method": "users.get",
+                "request_id": "devinfo",
+                "params": {
+                    "user_ids": "242521347,595756916,448368288",
+                    "v": "5.130",
+                    "fields": "photo_100",
+                    "access_token": APP_SECRET
+                }
+            }).then(data => {
+                console.log(data);
+                let devinfo = {}
+                for (const info of data.response)
+                    devinfo[info.id] = {name: `${info.first_name} ${info.last_name}`, photo: info.photo_100}
+                devinfo["expire"] = Date.now() + 120 * 60000
+                this.setState({devinfo})
+                localStorage.setItem("devinfo", JSON.stringify(devinfo))
+            }).catch(error => {
+                console.error(error)
+                throw error;
+            });
 
         window.onpopstate = () => {
             let timeNow = +new Date();

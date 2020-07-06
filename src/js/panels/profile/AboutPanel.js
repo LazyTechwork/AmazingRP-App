@@ -32,6 +32,7 @@ class AboutPanel extends React.Component {
                             description="Разработчик"
                             before={<Avatar src={devinfo[242521347].photo}/>}
                             href="//vk.com/id242521347"
+                            target="_blank"
                         >
                             {devinfo[242521347].name}
                         </SimpleCell>
@@ -39,6 +40,7 @@ class AboutPanel extends React.Component {
                             description="Разработчик"
                             before={<Avatar src={devinfo[595756916].photo}/>}
                             href="//vk.com/id595756916"
+                            target="_blank"
                         >
                             {devinfo[595756916].name}
                         </SimpleCell>
@@ -46,6 +48,7 @@ class AboutPanel extends React.Component {
                             description="Менеджер"
                             before={<Avatar src={devinfo[448368288].photo}/>}
                             href="//vk.com/id448368288"
+                            target="_blank"
                         >
                             {devinfo[448368288].name}
                         </SimpleCell>

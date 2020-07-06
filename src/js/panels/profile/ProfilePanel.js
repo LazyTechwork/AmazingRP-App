@@ -119,7 +119,7 @@ class ProfilePanel extends React.Component {
                 <Separator wide/>
 
                 <Div>
-                    <div><Button stretched mode="secondary" size="l">О нас и приложении</Button></div>
+                    <div><Button stretched mode="secondary" size="l" onClick={()=>setPage("profile", "about")}>О нас и приложении</Button></div>
                     <Caption level="3" weight="regular" style={{
                         marginTop: 16,
                         textAlign: "center"
