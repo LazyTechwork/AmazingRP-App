@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {goBack} from '../../store/router/actions';
 import {setFormData} from "../../store/formData/actions";
-import {Avatar, Caption, Div, Group, Header, Panel, PanelHeader, PanelHeaderBack, SimpleCell} from "@vkontakte/vkui";
+import {Avatar, Div, Group, Header, Panel, PanelHeader, PanelHeaderBack, SimpleCell} from "@vkontakte/vkui";
 import {APP_BUILD, APP_NAME, APP_VERSION} from "../../constants/appinfo";
 
 class AboutPanel extends React.Component {
@@ -19,15 +19,20 @@ class AboutPanel extends React.Component {
                 >
                     О нас и приложении
                 </PanelHeader>
-                <Div>
+                <Div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    marginTop: 16
+                }}>
                     <Avatar mode="app"
                             src="https://sun9-60.userapi.com/Lt-G-lLRG3cM7LeT_AKb5I4ai0H22cyXhdar-w/qU6dZKESAZA.jpg"
-                            size={100}/>
-                    <Caption level="1" weight="regular" style={{
-                        marginTop: 16,
-                        textAlign: "center"
-                    }}>{`${APP_NAME} ${APP_VERSION} (${APP_BUILD})`}</Caption>
-                    {devinfo && <Group header={<Header mode="secondary">Команда приложения</Header>}>
+                            size={100}/><br/>
+                    {`${APP_NAME} ${APP_VERSION} (${APP_BUILD})`}
+                </Div>
+                {devinfo && <Div>
+                    <Group header={<Header mode="secondary">Команда приложения</Header>}>
                         <SimpleCell
                             description="Разработчик"
                             before={<Avatar src={devinfo[242521347].photo}/>}
@@ -52,8 +57,8 @@ class AboutPanel extends React.Component {
                         >
                             {devinfo[448368288].name}
                         </SimpleCell>
-                    </Group>}
-                </Div>
+                    </Group>
+                </Div>}
             </Panel>
         );
     }
