@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage} from '../../store/router/actions';
+import Icon24Play from '@vkontakte/icons/dist/24/play';
 
 import {Button, Cell, Panel, PanelHeader} from "@vkontakte/vkui"
 
@@ -35,21 +36,21 @@ class QuizPanel extends React.Component {
                     multiline
                     size="l"
                     description={quiz.description}
-                    asideContent={`${this.state.passedQuizes ? this.state.passedQuizes[quiz.id] ?? "0" : "0"}/${quiz.questions.length}`}
+                    asideContent={<Button mode="primary" onClick={() => {
+                        let shuffledQuestions = quiz.questions.slice(0)
+                        shuffledQuestions.sort(shuffler)
+                        shuffledQuestions.forEach(q => q.answers.sort(shuffler))
+                        setFormData("quiz", {
+                            quiz: {...quiz, questions: shuffledQuestions}, tech: {
+                                next: randomInteger(0, quiz.questions.length - 1),
+                                rightAnswers: 0,
+                                passed: []
+                            }, started: false
+                        })
+                        setPage("quiz", "start")
+                    }}><Icon24Play/></Button>}
                     bottomContent={
-                        <Button mode="primary" onClick={() => {
-                            let shuffledQuestions = quiz.questions.slice(0)
-                            shuffledQuestions.sort(shuffler)
-                            shuffledQuestions.forEach(q => q.answers.sort(shuffler))
-                            setFormData("quiz", {
-                                quiz: {...quiz, questions: shuffledQuestions}, tech: {
-                                    next: randomInteger(0, quiz.questions.length - 1),
-                                    rightAnswers: 0,
-                                    passed: []
-                                }, started: false
-                            })
-                            setPage("quiz", "start")
-                        }}>Принять участие</Button>
+                        `Предыдущая игра: ${this.state.passedQuizes ? this.state.passedQuizes[quiz.id] ?? "0" : "0"}/${quiz.questions.length}`
                     }
                 >
                     {quiz.name}
