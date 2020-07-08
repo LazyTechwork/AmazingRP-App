@@ -52,8 +52,7 @@ class RadioPanel extends React.Component {
                             <Icon28Pause/> :
                             <Icon28Play/>}</Button>}
                         bottomContent={
-                            this.props.platform === IOS ?
-                                "." :
+                            this.props.platform === IOS ? {} :
                                 <Slider
                                     min={0}
                                     max={1}
