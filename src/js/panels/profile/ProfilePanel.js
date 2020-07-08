@@ -49,7 +49,7 @@ class ProfilePanel extends React.Component {
                             }}
                         />
                     }
-                    actions={<Button mode="overlay_primary" href="https://amazing-rp.ru/start" target="_blank">Начать
+                    actions={<Button mode="overlay_primary" href="https://vk.com/topic-69052904_40091798" target="_blank">Начать
                         игру</Button>}
                 />
 

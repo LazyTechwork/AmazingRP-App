@@ -46,10 +46,8 @@ class QuizFinale extends React.Component {
                     <Text weight="regular" style={{marginBottom: 16}}>Отвечено правильно: {quiz.rightAnswers}</Text>
                 </Div>
                 <Div style={{display: 'flex'}}>
-                     <Button size="l" before={<Icon28ShareOutline width={24} height={24}/>} stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться
-                        результатом</Button>
-                    <Button size="l" before={<Icon20EducationOutline width={24} height={24}/>} stretched mode="secondary" onClick={() => setStory("quiz", "list")}> Другие
-                        викторины</Button>
+                     <Button size="l" before={<Icon28ShareOutline width={24} height={24}/>} stretched style={{marginRight: 8}} onClick={() => this.shareResult()}>Поделиться</Button>
+                    <Button size="l" before={<Icon20EducationOutline width={24} height={24}/>} stretched mode="secondary" onClick={() => setStory("quiz", "list")}> Викторины</Button>
                 </Div>
                 {this.state.snackbar}
 
