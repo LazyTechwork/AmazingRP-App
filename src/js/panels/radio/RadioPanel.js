@@ -14,7 +14,7 @@ import {IOS} from "../../constants/platforms";
 class RadioPanel extends React.Component {
 
     state = {
-        volume: 0.5,
+        volume: this.props.platform === IOS ? 1.0 : 0.5,
         isPlaying: false,
         ...this.props.inputData["radio_volume"]
     }
