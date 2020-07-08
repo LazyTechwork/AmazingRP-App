@@ -9,7 +9,7 @@ import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
-import {IOS, WEB} from "../../constants/platforms";
+import {IOS} from "../../constants/platforms";
 
 class RadioPanel extends React.Component {
 
@@ -52,7 +52,7 @@ class RadioPanel extends React.Component {
                             <Icon28Pause/> :
                             <Icon28Play/>}</Button>}
                         bottomContent={
-                            this.props.platform === WEB ? "" :
+                            this.props.platform === IOS ? "" :
                                 <Slider
                                     min={0}
                                     max={1}
