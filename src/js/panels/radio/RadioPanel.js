@@ -53,7 +53,7 @@ class RadioPanel extends React.Component {
                             <Icon28Play/>}</Button>}
                         bottomContent={
                             this.props.platform === IOS ?
-                                "К сожалению, регулятор громкости не работает на устройствах под управлением iOS" :
+                                :
                                 <Slider
                                     min={0}
                                     max={1}
