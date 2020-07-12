@@ -11,6 +11,7 @@ import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import Icon28FireOutline from '@vkontakte/icons/dist/28/fire_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
+import Icon28MagicWandOutline from '@vkontakte/icons/dist/28/magic_wand_outline';
 
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
@@ -671,6 +672,10 @@ class App extends React.Component {
                     selected={activeStory === 'quiz'}
                 ><Icon28FireOutline/></TabbarItem>
                 <TabbarItem
+                    onClick={() => setStory('reallife', 'base')}
+                    selected={activeStory === 'reallife'}
+                ><Icon28MagicWandOutline/></TabbarItem>
+                <TabbarItem
                     onClick={() => setStory('radio', 'base')}
                     selected={activeStory === 'radio'}
                 ><Icon28HeadphonesOutline/></TabbarItem>
@@ -726,6 +731,18 @@ class App extends React.Component {
                             <RoleplayPanel id="rp"/>
                             <FAQPanel id="faq"/>
                             <AboutPanel id="about" devinfo={this.state.devinfo}/>
+                        </View>
+                    </Root>
+
+                    <Root id="reallife" activeView={activeView} popout={popout}>
+                        <View
+                            id="reallife"
+                            modal={homeModals}
+                            activePanel={getActivePanel("reallife")}
+                            history={history}
+                            onSwipeBack={() => goBack()}
+                        >
+                            <ProfilePanel id="base" userinfo={this.state.userinfo}/>
                         </View>
                     </Root>
 
