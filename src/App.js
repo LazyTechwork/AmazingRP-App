@@ -37,6 +37,7 @@ import RoleplayPanel from "./js/panels/profile/RoleplayPanel";
 import {setAppPlatform} from "./js/store/vk/actions";
 import {APP_SECRET} from "./js/constants/appinfo";
 import AboutPanel from "./js/panels/profile/AboutPanel";
+import ReallifePanel from "./js/panels/reallife/ReallifePanel";
 
 
 class App extends React.Component {
@@ -742,7 +743,7 @@ class App extends React.Component {
                             history={history}
                             onSwipeBack={() => goBack()}
                         >
-                            <ProfilePanel id="base" userinfo={this.state.userinfo}/>
+                            <ReallifePanel id="base"/>
                         </View>
                     </Root>
 
