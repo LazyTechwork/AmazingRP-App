@@ -10,6 +10,8 @@ import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 import {IOS} from "../../constants/platforms";
 import {APICall} from "../../services/VK";
+import moment from "moment";
+import "moment/locale/ru"
 
 const getCommentsData = {
     group_id: 196785510,
@@ -30,10 +32,9 @@ class RadioPanel extends React.Component {
 
     constructor(props) {
         super(props);
+        moment.locale("ru")
 
         //    board.getComments
-
-
         APICall("board.getComments", getCommentsData).then((data) => {
             console.log(data);
             const comments = data.items
@@ -105,7 +106,7 @@ class RadioPanel extends React.Component {
                                     key={`radiocomment_${comment.id}`}
                                     before={<Avatar size={48} src={commenter.photo_50}/>}
                                     text={comment.text}
-                                    caption={comment.date}
+                                    caption={moment(comment.date*1000).fromNow()}
                                     disabled={true}
                                     style={{margin: '10px 0'}}
                                     multiline={true}
