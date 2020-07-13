@@ -647,7 +647,6 @@ class App extends React.Component {
                     "access_token": APP_SECRET
                 }
             }).then(data => {
-                console.log(data);
                 let devinfo = {}
                 for (const info of data.response)
                     devinfo[info.id] = {name: `${info.first_name} ${info.last_name}`, photo: info.photo_100}

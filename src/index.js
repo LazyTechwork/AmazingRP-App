@@ -24,11 +24,11 @@ export const store = createStore(rootReducer, composeWithDevTools(
 
 store.dispatch(setStory('home', 'base'));
 
-eruda.init()
-
 ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>,
     document.getElementById('root')
 );
+
+eruda.init()

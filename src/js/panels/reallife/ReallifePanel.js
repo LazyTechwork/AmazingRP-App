@@ -1,12 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
+import {goBack, setPage, setStory} from '../../store/router/actions';
 
 import {Div, Panel, PanelHeader, Separator, Title} from "@vkontakte/vkui"
 import ReactCompareImage from 'react-compare-image';
-
-import {setFormData} from "../../store/formData/actions";
 
 const beforeafter = [
     {
@@ -42,23 +40,18 @@ const beforeafter = [
 
 class ReallifePanel extends React.Component {
 
-    state = {
-        userinfo: null
-    }
-
-    componentDidMount() {
-        this.setState({userinfo: this.props.userinfo})
-    }
-
     render() {
         const {id} = this.props;
         return (
             <Panel id={id}>
                 <PanelHeader>Сравните, что лучше</PanelHeader>
                 <Div>
-                    {beforeafter.map((ba) => (<div>
+                    {beforeafter.map((ba) => (<div key={ba.name}>
                         <Title level="2" weight="semibold" style={{marginBottom: 16}}>{ba.name}</Title>
-                        <ReactCompareImage leftImage={ba.crmp} leftImageCss={{borderRadius: 10}} rightImage={ba.real} rightImageCss={{borderRadius: 10}}/>
+                        <ReactCompareImage
+                            handle={<React.Fragment/>} leftImage={ba.crmp}
+                            leftImageCss={{borderRadius: 10}} rightImage={ba.real}
+                            rightImageCss={{borderRadius: 10}}/>
                         <Separator style={{margin: '15px 0'}}/>
                     </div>))}
                 </Div>
@@ -71,11 +64,7 @@ class ReallifePanel extends React.Component {
 const mapDispatchToProps = {
     setPage,
     setStory,
-    goBack,
-    openPopout,
-    closePopout,
-    openModal,
-    setFormData
+    goBack
 };
 
 export default connect(null, mapDispatchToProps)(ReallifePanel);

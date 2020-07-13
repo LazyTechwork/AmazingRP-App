@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 react-scripts start",
+    "tunnel": "vk-tunnel --insecure=1 --http-protocol=http --ws-protocol=ws --host=localhost --port=10888",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "vk-miniapps-deploy"
@@ -17,7 +18,8 @@
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.12.19",
     "react-scripts": "^3.4.1",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "dependencies": {
     "@types/react": "^16.9.41",
