@@ -2,9 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {goBack, setPage, setStory} from '../../store/router/actions';
-
+import {ReactCompareSlider, ReactCompareSliderImage} from 'react-compare-slider';
 import {Div, Panel, PanelHeader, Separator, Title} from "@vkontakte/vkui"
-import ReactCompareImage from 'react-compare-image';
 
 const beforeafter = [
     {
@@ -48,10 +47,17 @@ class ReallifePanel extends React.Component {
                 <Div>
                     {beforeafter.map((ba) => (<div key={ba.name}>
                         <Title level="2" weight="semibold" style={{marginBottom: 16}}>{ba.name}</Title>
-                        <ReactCompareImage
-                            handle={<React.Fragment/>} leftImage={ba.crmp}
-                            leftImageCss={{borderRadius: 10}} rightImage={ba.real}
-                            rightImageCss={{borderRadius: 10}}/>
+                        <ReactCompareSlider
+                            style={{borderRadius: 10}}
+                            itemOne={<ReactCompareSliderImage
+                                src={ba.crmp}
+                                alt={`${ba.name} в КРМП`}
+                            />}
+                            itemTwo={<ReactCompareSliderImage
+                                src={ba.real}
+                                alt={`${ba.name} в реальной жизни`}
+                            />}
+                        />
                         <Separator style={{margin: '15px 0'}}/>
                     </div>))}
                 </Div>
