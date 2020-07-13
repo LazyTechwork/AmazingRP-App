@@ -3,20 +3,43 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Div, Panel, PanelHeader, Placeholder, Slider} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
-import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 import {IOS} from "../../constants/platforms";
+import {APICall} from "../../services/VK";
 
 class RadioPanel extends React.Component {
 
     state = {
         volume: this.props.platform === IOS ? 1.0 : 0.5,
         isPlaying: false,
-        ...this.props.inputData["radio_volume"]
+        ...this.props.inputData["radio_volume"],
+        comments: [],
+        commenters: {}
+    }
+
+    constructor(props) {
+        super(props);
+
+        //    board.getComments
+        const getComments = {
+            group_id: 196785510,
+            topic_id: 41913717,
+            extended: true,
+            sort: 'desc'
+        }
+
+        APICall("board.getComments", getComments).then((data) => {
+            console.log(data);
+            this.state.comments = data.items
+            for (const profile of data.profiles)
+                this.state.commenters[profile.id] = profile
+            for (const group of data.groups)
+                this.state.commenters[-group.id] = group
+        })
     }
 
     componentWillUnmount() {
@@ -63,12 +86,15 @@ class RadioPanel extends React.Component {
                         Amazing Live
                     </Cell>
 
-                    <Placeholder
+                    {/*<Placeholder
                         icon={<Icon28HeadphonesOutline width={56} height={56}/>}
                         header="Другие радиостанции"
                     >
                         Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
-                    </Placeholder>
+                    </Placeholder>*/}
+                </Div>
+                <Div>
+
                 </Div>
                 <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""}
                        autoPlay={true}

@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux'
 import {closeModal, goBack, setStory} from "./js/store/router/actions";
 import {getActivePanel} from "./js/services/_functions";
 import * as VK from './js/services/VK';
+import {getAuthToken} from './js/services/VK';
 
 import {ConfigProvider, Epic, ModalRoot, Root, Tabbar, TabbarItem, View} from "@vkontakte/vkui";
 
@@ -617,6 +618,7 @@ class App extends React.Component {
         dispatch(VK.initApp());
         console.log(`SET PLATFORM - ${params.get('vk_platform')}`)
         dispatch(setAppPlatform(params.get('vk_platform')))
+        dispatch(getAuthToken([]))
 
         // Получаем информацию о пользователе
         bridge.send("VKWebAppGetUserInfo", {}).then(data => {
