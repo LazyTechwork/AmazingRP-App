@@ -40,7 +40,7 @@ const beforeafter = [
     },
 ]
 
-class ProfilePanel extends React.Component {
+class ReallifePanel extends React.Component {
 
     state = {
         userinfo: null
@@ -78,4 +78,4 @@ const mapDispatchToProps = {
     setFormData
 };
 
-export default connect(null, mapDispatchToProps)(ProfilePanel);
+export default connect(null, mapDispatchToProps)(ReallifePanel);

@@ -16,12 +16,15 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './css/main.scss';
 
 import App from './App';
+import eruda from 'eruda'
 
 export const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk),
 ));
 
 store.dispatch(setStory('home', 'base'));
+
+eruda.init()
 
 ReactDOM.render(
     <Provider store={store}>
