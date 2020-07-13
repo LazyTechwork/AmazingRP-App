@@ -52,14 +52,13 @@ class ProfilePanel extends React.Component {
 
     render() {
         const {id} = this.props;
-
         return (
             <Panel id={id}>
                 <PanelHeader>Сравните, что лучше</PanelHeader>
                 <Div>
                     {beforeafter.map((ba) => (<div>
                         <Title level="2" weight="semibold" style={{marginBottom: 16}}>{ba.name}</Title>
-                        <ReactCompareImage leftImage={ba.crmp} rightImage={ba.real}/>
+                        <ReactCompareImage leftImage={ba.crmp} leftImageCss={{borderRadius: 10}} rightImage={ba.real} rightImageCss={{borderRadius: 10}}/>
                         <Separator style={{margin: '15px 0'}}/>
                     </div>))}
                 </Div>
