@@ -3,13 +3,20 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Div, Panel, PanelHeader, Slider} from "@vkontakte/vkui"
+import {Avatar, Button, Cell, Div, Group, Header, Panel, PanelHeader, RichCell, Slider} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
 import {IOS} from "../../constants/platforms";
 import {APICall} from "../../services/VK";
+
+const getCommentsData = {
+    group_id: 196785510,
+    topic_id: 41913717,
+    extended: true,
+    sort: 'desc'
+}
 
 class RadioPanel extends React.Component {
 
@@ -25,20 +32,17 @@ class RadioPanel extends React.Component {
         super(props);
 
         //    board.getComments
-        const getComments = {
-            group_id: 196785510,
-            topic_id: 41913717,
-            extended: true,
-            sort: 'desc'
-        }
 
-        APICall("board.getComments", getComments).then((data) => {
+
+        APICall("board.getComments", getCommentsData).then((data) => {
             console.log(data);
-            this.state.comments = data.items
+            const comments = data.items
+            const commenters = {}
             for (const profile of data.profiles)
-                this.state.commenters[profile.id] = profile
+                commenters[profile.id] = profile
             for (const group of data.groups)
-                this.state.commenters[-group.id] = group
+                commenters[-group.id] = group
+            this.setState({comments, commenters})
         })
     }
 
@@ -92,9 +96,33 @@ class RadioPanel extends React.Component {
                     >
                         Скоро мы добавим дополнительные радиостанции, <br/> чтобы играть было гораздо веселее!
                     </Placeholder>*/}
-                </Div>
-                <Div>
-
+                    <Group>
+                        <Header mode="secondary">Музыкальные пожелания</Header>
+                        {this.state.comments.map((comment) => {
+                            const commenter = this.state.commenters[comment.from_id]
+                            return (
+                                <RichCell
+                                    key={`radiocomment_${comment.id}`}
+                                    before={<Avatar size={48} src={commenter.photo_50}/>}
+                                    text={comment.text}
+                                    caption={comment.date}
+                                    disabled={true}
+                                    style={{margin: '10px 0'}}
+                                    multiline={true}
+                                >
+                                    {commenter.name ?? `${commenter.first_name} ${commenter.last_name}`}
+                                </RichCell>
+                            )
+                        })}
+                        <div style={{marginTop: 12}}>
+                            <Button mode={"primary"}
+                                    href={`//vk.com/topic-${getCommentsData.group_id}_${getCommentsData.topic_id}`}
+                                    target="_blank"
+                                    stretched>
+                                Оставить пожелание
+                            </Button>
+                        </div>
+                    </Group>
                 </Div>
                 <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""}
                        autoPlay={true}
