@@ -30,6 +30,7 @@ const getCommentsData = {
     group_id: 196785510,
     topic_id: 41913717,
     extended: true,
+    count: 15,
     sort: 'desc'
 }
 
