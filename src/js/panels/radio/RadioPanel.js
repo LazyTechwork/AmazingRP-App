@@ -14,7 +14,8 @@ import {
     PanelHeader,
     RichCell,
     SimpleCell,
-    Slider
+    Slider,
+    Spinner
 } from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
@@ -39,6 +40,7 @@ class RadioPanel extends React.Component {
     state = {
         volume: this.props.platform === IOS ? 1.0 : 0.5,
         isPlaying: false,
+        isLoaded: false,
         ...this.props.inputData["radio_volume"],
         comments: [],
         commenters: {}
@@ -52,19 +54,20 @@ class RadioPanel extends React.Component {
         APICall("board.getComments", getCommentsData).then((data) => {
             const comments = data.items
             const commenters = {}
+
             for (const profile of data.profiles)
                 commenters[profile.id] = profile
             for (const group of data.groups)
                 commenters[-group.id] = group
+
             for (const comment of comments)
                 if (comment.attachments) {
                     comment.audio = []
-                    for (const attachment of comment.attachments) {
-                        if (attachment.type === 'audio') {
+                    for (const attachment of comment.attachments)
+                        if (attachment.type === 'audio')
                             comment.audio.push(attachment.audio)
-                        }
-                    }
                 }
+
             this.setState({comments, commenters})
         })
     }
@@ -74,7 +77,7 @@ class RadioPanel extends React.Component {
     }
 
     toggleRadio() {
-        this.setState({isPlaying: !this.state.isPlaying})
+        this.setState({isPlaying: !this.state.isPlaying, isLoaded: false})
         this._radio.volume = this.state.volume
     }
 
@@ -85,6 +88,15 @@ class RadioPanel extends React.Component {
 
     render() {
         const {id} = this.props;
+
+        let playButton = null
+        if (this.state.isPlaying)
+            if (this.state.isLoaded)
+                playButton = (<Icon28Pause/>)
+            else
+                playButton = (<Spinner style={{color: "var(--text-primary)", width: 28, height: 28}}/>)
+        else
+            playButton = (<Icon28Play/>)
 
         return (
             <Panel id={id}>
@@ -98,9 +110,7 @@ class RadioPanel extends React.Component {
                         description="Официальное радио"
                         multiline
                         style={{marginBottom: 64}}
-                        asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{this.state.isPlaying ?
-                            <Icon28Pause/> :
-                            <Icon28Play/>}</Button>}
+                        asideContent={<Button mode="outline" onClick={() => this.toggleRadio()}>{playButton}</Button>}
                         bottomContent={
                             this.props.platform === IOS ? "" :
                                 <Slider
@@ -123,7 +133,6 @@ class RadioPanel extends React.Component {
                         <Header mode="secondary">Музыкальные пожелания</Header>
                         {this.state.comments.map((comment) => {
                             const commenter = this.state.commenters[comment.from_id]
-                            console.log(comment)
                             return (
                                 <RichCell
                                     key={`radiocomment_${comment.id}`}
@@ -165,6 +174,7 @@ class RadioPanel extends React.Component {
                 </Div>
                 <audio src={this.state.isPlaying && this.props.isAppOpen ? "https://radio.amazing-rp.ru/live" : ""}
                        autoPlay={true}
+                       onPlay={() => this.setState({isLoaded: true})}
                        ref={(a) => this._radio = a}/>
             </Panel>
         );
