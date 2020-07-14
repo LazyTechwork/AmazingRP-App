@@ -3,11 +3,24 @@ import {connect} from 'react-redux';
 
 import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
-import {Avatar, Button, Cell, Div, Group, Header, Panel, PanelHeader, RichCell, Slider} from "@vkontakte/vkui"
+import {
+    Avatar,
+    Button,
+    Cell,
+    Div,
+    Group,
+    Header,
+    Panel,
+    PanelHeader,
+    RichCell,
+    SimpleCell,
+    Slider
+} from "@vkontakte/vkui"
 
 import {setFormData} from "../../store/formData/actions";
 import Icon28Play from '@vkontakte/icons/dist/28/play';
 import Icon28Pause from '@vkontakte/icons/dist/28/pause';
+import Icon28SongOutline from '@vkontakte/icons/dist/28/song_outline';
 import {IOS} from "../../constants/platforms";
 import {APICall} from "../../services/VK";
 import moment from "moment";
@@ -36,13 +49,21 @@ class RadioPanel extends React.Component {
 
         //    board.getComments
         APICall("board.getComments", getCommentsData).then((data) => {
-            console.log(data);
             const comments = data.items
             const commenters = {}
             for (const profile of data.profiles)
                 commenters[profile.id] = profile
             for (const group of data.groups)
                 commenters[-group.id] = group
+            for (const comment of comments)
+                if (comment.attachments)
+                    for (const attachment of comment.attachments) {
+                        if (attachment.type === 'audio') {
+                            comment.audio = attachment.audio
+                            console.log(comment.audio)
+                            break
+                        }
+                    }
             this.setState({comments, commenters})
         })
     }
@@ -101,15 +122,29 @@ class RadioPanel extends React.Component {
                         <Header mode="secondary">Музыкальные пожелания</Header>
                         {this.state.comments.map((comment) => {
                             const commenter = this.state.commenters[comment.from_id]
+                            console.log(comment)
                             return (
                                 <RichCell
                                     key={`radiocomment_${comment.id}`}
                                     before={<Avatar size={48} src={commenter.photo_50}/>}
                                     text={comment.text}
-                                    caption={moment(comment.date*1000).fromNow()}
-                                    disabled={true}
+                                    caption={moment(comment.date * 1000).fromNow()}
+                                    href={`//vk.com/topic-${getCommentsData.group_id}_${getCommentsData.topic_id}?post=${comment.id}`}
+                                    target="_blank"
                                     style={{margin: '10px 0'}}
                                     multiline={true}
+                                    bottom={comment.audio ?
+                                    <SimpleCell
+                                        disabled
+                                        before={<Avatar
+                                            mode="image"
+                                            size={48}
+                                            style={{background: "var(--background_light)"}}>
+                                            <Icon28SongOutline/>
+                                        </Avatar>}
+                                        description={comment.audio.artist}>
+                                        {comment.audio.title}
+                                    </SimpleCell> : ""}
                                 >
                                     {commenter.name ?? `${commenter.first_name} ${commenter.last_name}`}
                                 </RichCell>
