@@ -56,14 +56,14 @@ class RadioPanel extends React.Component {
             for (const group of data.groups)
                 commenters[-group.id] = group
             for (const comment of comments)
-                if (comment.attachments)
+                if (comment.attachments) {
+                    comment.audio = []
                     for (const attachment of comment.attachments) {
                         if (attachment.type === 'audio') {
-                            comment.audio = attachment.audio
-                            console.log(comment.audio)
-                            break
+                            comment.audio.push(attachment.audio)
                         }
                     }
+                }
             this.setState({comments, commenters})
         })
     }
@@ -133,18 +133,20 @@ class RadioPanel extends React.Component {
                                     target="_blank"
                                     style={{margin: '10px 0'}}
                                     multiline={true}
-                                    bottom={comment.audio ?
-                                    <SimpleCell
-                                        disabled
-                                        before={<Avatar
-                                            mode="image"
-                                            size={48}
-                                            style={{background: "var(--background_light)"}}>
-                                            <Icon28SongOutline/>
-                                        </Avatar>}
-                                        description={comment.audio.artist}>
-                                        {comment.audio.title}
-                                    </SimpleCell> : ""}
+                                    bottom={comment.audio && <div>{comment.audio.map((audio) => (
+                                        <SimpleCell
+                                            disabled
+                                            key={`commentaudio_${audio.id}`}
+                                            before={<Avatar
+                                                mode="image"
+                                                size={48}
+                                                style={{background: "var(--background_light)"}}>
+                                                <Icon28SongOutline/>
+                                            </Avatar>}
+                                            description={audio.artist}>
+                                            {audio.title}
+                                        </SimpleCell>
+                                    ))}</div>}
                                 >
                                     {commenter.name ?? `${commenter.first_name} ${commenter.last_name}`}
                                 </RichCell>
