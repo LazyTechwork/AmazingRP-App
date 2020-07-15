@@ -12,16 +12,19 @@ const actualRightsStorageVar = "acceptrights_1"
 class RightsPanel extends React.Component {
 
     state = {
-        accepted: false
+        accepted: false,
+        storageLoaded: false
     }
 
     componentDidMount() {
         if (localStorage.getItem(actualRightsStorageVar) && localStorage.getItem(actualRightsStorageVar) === '1')
             this.autoGetToken()
-        storageGet(actualRightsStorageVar).then((data)=>{
+        storageGet(actualRightsStorageVar).then((data) => {
             if (data.keys.length !== 0 && data.keys[0].value === '1') {
                 localStorage.setItem(actualRightsStorageVar, "1")
                 this.autoGetToken()
+            } else {
+                this.setState({storageLoaded: true})
             }
         })
     }
@@ -31,7 +34,7 @@ class RightsPanel extends React.Component {
         getAuthTokenManually([]).then((result) => {
             setAccessToken(result.access_token)
             setStory("home", "base")
-        }).catch(()=>{
+        }).catch(() => {
             setAccessToken(null)
         })
     }
@@ -46,13 +49,16 @@ class RightsPanel extends React.Component {
             localStorage.setItem(actualRightsStorageVar, "1")
 
             setStory("home", "base")
-        }).catch(()=>{
+        }).catch(() => {
             setAccessToken(null)
         })
     }
 
     render() {
         const {id} = this.props;
+
+        if (!this.state.storageLoaded)
+            return (<Panel id={id}/>)
 
         return (
             <Panel id={id}>
