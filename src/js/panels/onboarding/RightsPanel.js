@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
+import {setStory} from '../../store/router/actions';
 
 import {Button, Checkbox, Div, Panel, PanelHeader, Text, Title} from "@vkontakte/vkui"
+import {getAuthTokenManually, storageGet, storageSet} from "../../services/VK";
+import {setAccessToken} from "../../store/vk/actions";
 
-import {setFormData} from "../../store/formData/actions";
-import {storageSet} from "../../services/VK";
+const actualRightsStorageVar = "acceptrights_1"
 
 class RightsPanel extends React.Component {
 
@@ -14,16 +15,32 @@ class RightsPanel extends React.Component {
         accepted: false
     }
 
+    componentDidMount() {
+        if (localStorage.getItem(actualRightsStorageVar) && localStorage.getItem(actualRightsStorageVar) === '1')
+            this.props.setStory("home", "base")
+        storageGet(actualRightsStorageVar).then((data)=>{
+            if (data.keys.length !== 0 && data.keys[0].value === '1') {
+                localStorage.setItem(actualRightsStorageVar, "1")
+                this.props.setStory("home", "base")
+            }
+        })
+    }
+
     acceptConditions() {
         if (!this.state.accepted)
             return
-        storageSet("acceptrights_1", "1").then((data) => {
-            console.log(data);
+        const {setAccessToken} = this.props;
+        getAuthTokenManually([]).then((result) => {
+            setAccessToken(result.access_token)
+            storageSet(actualRightsStorageVar, "1")
+            localStorage.setItem(actualRightsStorageVar, "1")
+        }).catch(()=>{
+            setAccessToken(null)
         })
     }
 
     render() {
-        const {id, setStory} = this.props;
+        const {id} = this.props;
 
         return (
             <Panel id={id}>
@@ -49,13 +66,7 @@ class RightsPanel extends React.Component {
 }
 
 const mapDispatchToProps = {
-    setPage,
-    setStory,
-    goBack,
-    openPopout,
-    closePopout,
-    openModal,
-    setFormData
+    setStory, setAccessToken
 };
 
 export default connect(null, mapDispatchToProps)(RightsPanel);

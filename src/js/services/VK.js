@@ -37,6 +37,14 @@ export const getAuthToken = (scope) => (dispatch) => {
     });
 };
 
+
+export const getAuthTokenManually = (scope) => {
+    return bridge.send("VKWebAppGetAuthToken", {
+        "app_id": APP_ID,
+        "scope": scope.join(',')
+    });
+};
+
 export const storageSet = (key, value) => {
     return bridge.send("VKWebAppStorageSet", {"key": key, "value": value})
 }
