@@ -17,12 +17,21 @@ class RightsPanel extends React.Component {
 
     componentDidMount() {
         if (localStorage.getItem(actualRightsStorageVar) && localStorage.getItem(actualRightsStorageVar) === '1')
-            this.props.setStory("home", "base")
+            this.autoGetToken()
         storageGet(actualRightsStorageVar).then((data)=>{
             if (data.keys.length !== 0 && data.keys[0].value === '1') {
                 localStorage.setItem(actualRightsStorageVar, "1")
-                this.props.setStory("home", "base")
+                this.autoGetToken()
             }
+        })
+    }
+
+    autoGetToken() {
+        getAuthTokenManually([]).then((result) => {
+            setAccessToken(result.access_token)
+            this.props.setStory("home", "base")
+        }).catch(()=>{
+            setAccessToken(null)
         })
     }
 
