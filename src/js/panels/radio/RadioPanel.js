@@ -26,6 +26,7 @@ import {IOS} from "../../constants/platforms";
 import {APICall} from "../../services/VK";
 import moment from "moment";
 import "moment/locale/ru"
+import {updateAppViewState} from "../../store/vk/actions";
 
 const getCommentsData = {
     group_id: 196785510,
@@ -77,6 +78,7 @@ class RadioPanel extends React.Component {
     }
 
     toggleRadio() {
+        this.props.updateAppViewState(false)
         this.setState({isPlaying: !this.state.isPlaying, isLoaded: false})
         this._radio.volume = this.state.volume
     }
@@ -88,8 +90,8 @@ class RadioPanel extends React.Component {
 
     render() {
         const {id} = this.props;
-
-        let playButton = null
+        console.log("isAppOpen",this.props.isAppOpen)
+        let playButton
         if (this.state.isPlaying)
             if (this.state.isLoaded)
                 playButton = (<Icon28Pause/>)
@@ -196,7 +198,8 @@ const mapDispatchToProps = {
     openPopout,
     closePopout,
     openModal,
-    setFormData
+    setFormData,
+    updateAppViewState
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RadioPanel);

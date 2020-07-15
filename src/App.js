@@ -39,6 +39,7 @@ import {setAppPlatform} from "./js/store/vk/actions";
 import {APP_SECRET} from "./js/constants/appinfo";
 import AboutPanel from "./js/panels/profile/AboutPanel";
 import ReallifePanel from "./js/panels/reallife/ReallifePanel";
+import RightsPanel from "./js/panels/onboarding/RightsPanel";
 
 
 class App extends React.Component {
@@ -618,7 +619,7 @@ class App extends React.Component {
         dispatch(VK.initApp());
         console.log(`SET PLATFORM - ${params.get('vk_platform')}`)
         dispatch(setAppPlatform(params.get('vk_platform')))
-        dispatch(getAuthToken([]))
+        // dispatch(getAuthToken([]))
 
         // Получаем информацию о пользователе
         bridge.send("VKWebAppGetUserInfo", {}).then(data => {
@@ -671,18 +672,6 @@ class App extends React.Component {
                 window.history.pushState(null, null);
             }
         };
-
-        /*API.request('getBanners', null, 'GET', 1).then((banners) => {
-            this.setState({banners});
-            API.request('getNews', null, 'GET', 1).then((news) => {
-                this.setState({news});
-            }).catch((e) => {
-                console.error(e);
-            });
-        }).catch((e) => {
-            console.error(e);
-            this.setState({isLoaded: true});
-        });*/
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -750,7 +739,16 @@ class App extends React.Component {
 
         return (
             <ConfigProvider isWebView={true} scheme={colorScheme}>
-                <Epic activeStory={activeStory} tabbar={(activeStory === 'onboarding') ? null : tabbar}>
+                <Epic activeStory={activeStory} tabbar={(activeStory === 'rights') ? null : tabbar}>
+                    <Root id="rights" activeView={activeView}>
+                        <View
+                            id="rights"
+                            activePanel={getActivePanel("rights")}
+                        >
+                            <RightsPanel id="rights"/>
+                        </View>
+                    </Root>
+
                     <Root id="home" activeView={activeView} popout={popout}>
                         <View
                             id="home"
@@ -763,7 +761,6 @@ class App extends React.Component {
                             <PostView id="postview"/>
                         </View>
                     </Root>
-
 
                     <Root id="radio" activeView={activeView} popout={popout}>
                         <View
