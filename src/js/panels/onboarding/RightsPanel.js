@@ -34,6 +34,8 @@ class RightsPanel extends React.Component {
             setAccessToken(result.access_token)
             storageSet(actualRightsStorageVar, "1")
             localStorage.setItem(actualRightsStorageVar, "1")
+
+            this.props.setStory("home", "base")
         }).catch(()=>{
             setAccessToken(null)
         })
