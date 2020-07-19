@@ -12,6 +12,7 @@ import Icon28FireOutline from '@vkontakte/icons/dist/28/fire_outline';
 import Icon28HeadphonesOutline from '@vkontakte/icons/dist/28/headphones_outline';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 import Icon28MagicWandOutline from '@vkontakte/icons/dist/28/magic_wand_outline';
+import Icon28BrainOutline from '@vkontakte/icons/dist/28/brain_outline';
 
 import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
@@ -716,6 +717,10 @@ class App extends React.Component {
                     onClick={() => setStory('quiz', 'list')}
                     selected={activeStory === 'quiz'}
                 ><Icon28FireOutline/></TabbarItem>
+                <TabbarItem
+                    onClick={() => setStory('puzzle', 'base')}
+                    selected={activeStory === 'puzzle'}
+                ><Icon28BrainOutline/></TabbarItem>
                 <TabbarItem
                     onClick={() => setStory('reallife', 'base')}
                     selected={activeStory === 'reallife'}
