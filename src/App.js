@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
+import {WEB} from "./js/constants/platforms";
 import {closeModal, goBack, setStory} from "./js/store/router/actions";
 import {getActivePanel} from "./js/services/_functions";
 import * as VK from './js/services/VK';
@@ -712,10 +713,10 @@ class App extends React.Component {
                     onClick={() => setStory('quiz', 'list')}
                     selected={activeStory === 'quiz'}
                 ><Icon28FireOutline/></TabbarItem>
-                <TabbarItem
+                {this.props.platform === WEB ? <TabbarItem
                     onClick={() => setStory('puzzle', 'base')}
                     selected={activeStory === 'puzzle'}
-                ><Icon28BrainOutline/></TabbarItem>
+                ><Icon28BrainOutline/></TabbarItem> : ""}
                 <TabbarItem
                     onClick={() => setStory('reallife', 'base')}
                     selected={activeStory === 'reallife'}
@@ -836,7 +837,7 @@ const mapStateToProps = (state) => {
         activeModals: state.router.activeModals,
         popouts: state.router.popouts,
         scrollPosition: state.router.scrollPosition,
-
+        platform: state.vkui.platform,
         colorScheme: state.vkui.colorScheme
     };
 };
