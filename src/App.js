@@ -18,12 +18,6 @@ import HomeBotsListModal from './js/components/modals/HomeBotsListModal';
 import HomeBotInfoModal from './js/components/modals/HomeBotInfoModal';
 import HomePanel from "./js/panels/feed/HomePanel";
 
-import phone0 from './img/introduction/phone0.png';
-import phone1 from './img/introduction/phone1.png';
-import phone2 from './img/introduction/phone2.png';
-import phone3 from './img/introduction/phone3.png';
-import phone4 from './img/introduction/phone4.png';
-import phone5 from './img/introduction/phone5.png';
 import Onboarding from "./js/panels/onboarding/Onboarding.js";
 import PostView from "./js/panels/feed/PostView";
 import ProfilePanel from "./js/panels/profile/ProfilePanel";
@@ -825,53 +819,6 @@ class App extends React.Component {
                             <QuizStart id="start"/>
                             <QuizProcess id="quiz"/>
                             <QuizFinale id="finale"/>
-                        </View>
-                    </Root>
-
-
-                    <Root id="onboarding" activeView={activeView} popout={popout}>
-                        <View id="onboarding" activePanel="onboarding">
-                            <Onboarding
-                                id="onboarding"
-                                pages={[
-                                    {
-                                        stage: '1',
-                                        image: phone0,
-                                        title: 'Amazing RolePlay',
-                                        subtitle: 'Сервис по игровой сети CR-MP\nМы впервые в VK!'
-                                    },
-                                    {
-                                        stage2: 2,
-                                        image: phone1,
-                                        title: 'Новичок в CR-MP?',
-                                        subtitle: 'Мы предлагаем тебя крутой сервер под названием Amazing RolePlay'
-                                    },
-                                    {
-                                        stage3: 3,
-                                        image: phone2,
-                                        title: 'Следи за новостями!',
-                                        subtitle: 'В этом разделе можешь следить за новостями проекта.'
-                                    },
-                                    {
-                                        stage4: 4,
-                                        image: phone3,
-                                        title: 'Ищи игрока!',
-                                        subtitle: 'Прямо в сервисе можно поискать игрока,\nполучить его статистику'
-                                    },
-                                    {
-                                        stage5: 5,
-                                        image: phone4,
-                                        title: 'Задавай вопросы!',
-                                        subtitle: 'Хочешь быстрее развиваться на проекте?\nЗадавай вопросы, мы Вам поможем.'
-                                    },
-                                    {
-                                        stage6: 6,
-                                        image: phone5,
-                                        title: 'Играй в викторину!',
-                                        subtitle: 'Долго играешь на сервере и хочешь показать свои навыки?\nЭтот раздел для тебя.'
-                                    },
-                                ]}
-                            />
                         </View>
                     </Root>
                 </Epic>
