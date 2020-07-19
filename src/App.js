@@ -40,6 +40,7 @@ import {APP_SECRET} from "./js/constants/appinfo";
 import AboutPanel from "./js/panels/profile/AboutPanel";
 import ReallifePanel from "./js/panels/reallife/ReallifePanel";
 import RightsPanel from "./js/panels/onboarding/RightsPanel";
+import PuzzlePanel from "./js/panels/puzzle/PuzzlePanel";
 
 
 class App extends React.Component {
@@ -733,10 +734,6 @@ class App extends React.Component {
                     onClick={() => setStory('profile', 'base')}
                     selected={activeStory === 'profile'}
                 ><Icon28Menu/></TabbarItem>
-                {/*<TabbarItem
-                    onClick={() => setStory('more', 'callmodal')}
-                    selected={activeStory === 'more'}
-                ><Icon28More/></TabbarItem>*/}
             </Tabbar>
         );
 
@@ -801,6 +798,18 @@ class App extends React.Component {
                             onSwipeBack={() => goBack()}
                         >
                             <ReallifePanel id="base"/>
+                        </View>
+                    </Root>
+
+                    <Root id="puzzle" activeView={activeView} popout={popout}>
+                        <View
+                            id="puzzle"
+                            modal={homeModals}
+                            activePanel={getActivePanel("puzzle")}
+                            history={history}
+                            onSwipeBack={() => goBack()}
+                        >
+                            <PuzzlePanel id="base"/>
                         </View>
                     </Root>
 

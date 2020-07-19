@@ -1,12 +1,11 @@
+import {Div, Panel, PanelHeader} from "@vkontakte/vkui"
 import React from 'react';
+import Puzzle from "react-image-puzzle";
 import {connect} from 'react-redux';
 
-import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
-
-import {Panel, PanelHeader} from "@vkontakte/vkui"
-
 import {setFormData} from "../../store/formData/actions";
-import {Puzzle} from "react-image-puzzle";
+
+import {closePopout, goBack, openModal, openPopout, setPage, setStory} from '../../store/router/actions';
 
 class PuzzlePanel extends React.Component {
 
@@ -17,7 +16,7 @@ class PuzzlePanel extends React.Component {
             <Panel id={id}>
                 <PanelHeader>Разгадай пазл</PanelHeader>
                 <Div>
-                    <Puzzle image="https://i.ibb.co/BymXDmM/1w-Ztx-SGl-Vq4.jpg" level={5}/>
+                    <Puzzle image={"https://i.ibb.co/BymXDmM/1w-Ztx-SGl-Vq4.jpg"} level={2}/>
                 </Div>
             </Panel>
         );
